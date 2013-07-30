@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      6.23. Psmisc-22.20
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="lfs" id="lfs-7.3">
+    <div class="navheader">
+      <h4>
+        Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3
+      </h4>
+      <h3>
+        &#1043;&#1083;&#1072;&#1074;&#1072; 6.
+        &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;
+        &#1073;&#1072;&#1079;&#1086;&#1074;&#1099;&#1093;
+        &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1099;&#1093;
+        &#1087;&#1072;&#1082;&#1077;&#1090;&#1086;&#1074;
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="util-linux.html" title=
+          "Util-linux-2.22.2">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Util-linux-2.22.2
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="procps-ng.html" title=
+          "Procps-ng-3.3.6">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Procps-ng-3.3.6
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter06.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 6. &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072; &#1073;&#1072;&#1079;&#1086;&#1074;&#1099;&#1093; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1099;&#1093; &#1087;&#1072;&#1082;&#1077;&#1090;&#1086;&#1074;">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+    <div class="wrap" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-system-psmisc" name="ch-system-psmisc"></a>6.23.
+        Psmisc-22.20
+      </h1>
+      <div class="package" lang="en" xml:lang="en">
+        <p>
+          The Psmisc package contains programs for displaying information
+          about running processes.
+        </p>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1055;&#1088;&#1080;&#1073;&#1083;&#1080;&#1079;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1077;
+              &#1074;&#1088;&#1077;&#1084;&#1103;
+              &#1089;&#1073;&#1086;&#1088;&#1082;&#1080;:</strong>
+              <span class="segbody">&#1084;&#1077;&#1085;&#1077;&#1077; 0.1
+              SBU</span>
+            </div>
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1058;&#1088;&#1077;&#1073;&#1091;&#1077;&#1090;
+              &#1089;&#1074;&#1086;&#1073;&#1086;&#1076;&#1085;&#1086;&#1075;&#1086;
+              &#1084;&#1077;&#1089;&#1090;&#1072; &#1085;&#1072;
+              &#1076;&#1080;&#1089;&#1082;&#1077;:</strong> <span class=
+              "segbody">4.2 MB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="installation" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          6.23.1.
+          &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;
+          Psmisc
+        </h2>
+        <p>
+          &#1055;&#1086;&#1076;&#1075;&#1086;&#1090;&#1086;&#1074;&#1080;&#1084;
+          Psmisc &#1082;
+          &#1082;&#1086;&#1084;&#1087;&#1080;&#1083;&#1103;&#1094;&#1080;&#1080;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">./configure --prefix=/usr</kbd>
+</pre>
+        <p>
+          C&#1082;&#1086;&#1084;&#1087;&#1080;&#1083;&#1080;&#1088;&#1091;&#1077;&#1084;
+          &#1087;&#1072;&#1082;&#1077;&#1090;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make</kbd>
+</pre>
+        <p>
+          This package does not come with a test suite.
+        </p>
+        <p>
+          &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1080;&#1084;
+          &#1087;&#1072;&#1082;&#1077;&#1090;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make install</kbd>
+</pre>
+        <p>
+          Finally, move the <span class=
+          "command"><strong>killall</strong></span> and <span class=
+          "command"><strong>fuser</strong></span> programs to the location
+          specified by the FHS:
+        </p>
+        <pre class="userinput">
+<kbd class="command">mv -v /usr/bin/fuser   /bin
+mv -v /usr/bin/killall /bin</kbd>
+</pre>
+      </div>
+      <div class="content" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          <a id="contents-psmisc" name="contents-psmisc"></a>6.23.2.
+          &#1057;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1077;
+          Psmisc
+        </h2>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1083;&#1077;&#1085;&#1085;&#1099;&#1077;
+              &#1087;&#1088;&#1086;&#1075;&#1088;&#1072;&#1084;&#1084;&#1099;:</strong>
+              <span class="segbody">fuser, killall, peekfd, prtstat, pstree,
+              and pstree.x11 (link to pstree)</span>
+            </div>
+          </div>
+        </div>
+        <div class="variablelist">
+          <h3>
+            &#1050;&#1088;&#1072;&#1090;&#1082;&#1086;&#1077;
+            &#1086;&#1087;&#1080;&#1089;&#1072;&#1085;&#1080;&#1077;
+          </h3>
+          <table border="0">
+            <col align="left" valign="top" />
+            <tbody>
+              <tr>
+                <td>
+                  <p>
+                    <a id="fuser" name="fuser"></a><span class=
+                    "term"><span class=
+                    "command"><strong>fuser</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Reports the Process IDs (PIDs) of processes that use the
+                    given files or file systems
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="killall" name="killall"></a><span class=
+                    "term"><span class=
+                    "command"><strong>killall</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Kills processes by name; it sends a signal to all
+                    processes running any of the given commands
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="peekfd" name="peekfd"></a><span class=
+                    "term"><span class=
+                    "command"><strong>peekfd</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Peek at file descriptors of a running process, given its
+                    PID
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="prtstat" name="prtstat"></a><span class=
+                    "term"><span class=
+                    "command"><strong>prtstat</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Prints information about a process
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="pstree" name="pstree"></a><span class=
+                    "term"><span class=
+                    "command"><strong>pstree</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Displays running processes as a tree
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="pstree.x11" name="pstree.x11"></a><span class=
+                    "term"><span class=
+                    "command"><strong>pstree.x11</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Same as <span class=
+                    "command"><strong>pstree</strong></span>, except that it
+                    waits for confirmation before exiting
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="util-linux.html" title=
+          "Util-linux-2.22.2">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Util-linux-2.22.2
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="procps-ng.html" title=
+          "Procps-ng-3.3.6">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Procps-ng-3.3.6
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter06.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 6. &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072; &#1073;&#1072;&#1079;&#1086;&#1074;&#1099;&#1093; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1099;&#1093; &#1087;&#1072;&#1082;&#1077;&#1090;&#1086;&#1074;">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

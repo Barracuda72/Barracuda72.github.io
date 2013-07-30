@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      6.33. Bash-4.2
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="lfs" id="lfs-7.3">
+    <div class="navheader">
+      <h4>
+        Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3
+      </h4>
+      <h3>
+        &#1043;&#1083;&#1072;&#1074;&#1072; 6.
+        &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;
+        &#1073;&#1072;&#1079;&#1086;&#1074;&#1099;&#1093;
+        &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1099;&#1093;
+        &#1087;&#1072;&#1082;&#1077;&#1090;&#1086;&#1074;
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="readline.html" title=
+          "Readline-6.2">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Readline-6.2
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="libtool.html" title=
+          "Libtool-2.4.2">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Libtool-2.4.2
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter06.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 6. &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072; &#1073;&#1072;&#1079;&#1086;&#1074;&#1099;&#1093; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1099;&#1093; &#1087;&#1072;&#1082;&#1077;&#1090;&#1086;&#1074;">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+    <div class="wrap" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-system-bash" name="ch-system-bash"></a>6.33. Bash-4.2
+      </h1>
+      <div class="package" lang="en" xml:lang="en">
+        <p>
+          The Bash package contains the Bourne-Again SHell.
+        </p>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1055;&#1088;&#1080;&#1073;&#1083;&#1080;&#1079;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1077;
+              &#1074;&#1088;&#1077;&#1084;&#1103;
+              &#1089;&#1073;&#1086;&#1088;&#1082;&#1080;:</strong>
+              <span class="segbody">1.7 SBU</span>
+            </div>
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1058;&#1088;&#1077;&#1073;&#1091;&#1077;&#1090;
+              &#1089;&#1074;&#1086;&#1073;&#1086;&#1076;&#1085;&#1086;&#1075;&#1086;
+              &#1084;&#1077;&#1089;&#1090;&#1072; &#1085;&#1072;
+              &#1076;&#1080;&#1089;&#1082;&#1077;:</strong> <span class=
+              "segbody">45 MB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="installation" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          6.33.1. Installation of Bash
+        </h2>
+        <p>
+          First, apply the following patch to fix various bugs that have been
+          addressed upstream:
+        </p>
+        <pre class="userinput">
+<kbd class="command">patch -Np1 -i ../bash-4.2-fixes-11.patch</kbd>
+</pre>
+        <p>
+          Prepare Bash for compilation:
+        </p>
+        <pre class="userinput">
+<kbd class="command">./configure --prefix=/usr                     \
+            --bindir=/bin                     \
+            --htmldir=/usr/share/doc/bash-4.2 \
+            --without-bash-malloc             \
+            --with-installed-readline</kbd>
+</pre>
+        <div class="variablelist">
+          <p class="title">
+            <b>The meaning of the configure options:</b>
+          </p>
+          <dl>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--htmldir</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This option designates the directory into which HTML
+                formatted documentation will be installed.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--with-installed-readline</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This option tells Bash to use the <code class=
+                "filename">readline</code> library that is already installed
+                on the system rather than using its own readline version.
+              </p>
+            </dd>
+          </dl>
+        </div>
+        <p>
+          C&#1082;&#1086;&#1084;&#1087;&#1080;&#1083;&#1080;&#1088;&#1091;&#1077;&#1084;
+          &#1087;&#1072;&#1082;&#1077;&#1090;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make</kbd>
+</pre>
+        <p>
+          Skip down to «<span class="quote">Install the package</span>» if
+          not running the test suite.
+        </p>
+        <p>
+          To prepare the tests, ensure that the <code class=
+          "systemitem">nobody</code> user can write to the sources tree:
+        </p>
+        <pre class="userinput">
+<kbd class="command">chown -Rv nobody .</kbd>
+</pre>
+        <p>
+          Now, run the tests as the <code class="systemitem">nobody</code>
+          user:
+        </p>
+        <pre class="userinput">
+<kbd class="command">su nobody -s /bin/bash -c "PATH=$PATH make tests"</kbd>
+</pre>
+        <p>
+          &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1080;&#1084;
+          &#1087;&#1072;&#1082;&#1077;&#1090;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make install</kbd>
+</pre>
+        <p>
+          Run the newly compiled <span class=
+          "command"><strong>bash</strong></span> program (replacing the one
+          that is currently being executed):
+        </p>
+        <pre class="userinput">
+<kbd class="command">exec /bin/bash --login +h</kbd>
+</pre>
+        <div class="admon note">
+          <img alt=
+          "[&#1047;&#1072;&#1084;&#1077;&#1095;&#1072;&#1085;&#1080;&#1077;]"
+          src="../images/note.png" />
+          <h3>
+            &#1047;&#1072;&#1084;&#1077;&#1095;&#1072;&#1085;&#1080;&#1077;
+          </h3>
+          <p>
+            The parameters used make the <span class=
+            "command"><strong>bash</strong></span> process an interactive
+            login shell and continue to disable hashing so that new programs
+            are found as they become available.
+          </p>
+        </div>
+      </div>
+      <div class="content" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          <a id="contents-bash" name="contents-bash"></a>6.33.2.
+          &#1057;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1077;
+          Bash
+        </h2>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1083;&#1077;&#1085;&#1085;&#1099;&#1077;
+              &#1087;&#1088;&#1086;&#1075;&#1088;&#1072;&#1084;&#1084;&#1099;:</strong>
+              <span class="segbody">bash, bashbug, and sh (link to
+              bash)</span>
+            </div>
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1083;&#1077;&#1085;&#1085;&#1099;&#1081;
+              &#1082;&#1072;&#1090;&#1072;&#1083;&#1086;&#1075;:</strong>
+              <span class="segbody">/usr/share/doc/bash-4.2</span>
+            </div>
+          </div>
+        </div>
+        <div class="variablelist">
+          <h3>
+            &#1050;&#1088;&#1072;&#1090;&#1082;&#1086;&#1077;
+            &#1086;&#1087;&#1080;&#1089;&#1072;&#1085;&#1080;&#1077;
+          </h3>
+          <table border="0">
+            <col align="left" valign="top" />
+            <tbody>
+              <tr>
+                <td>
+                  <p>
+                    <a id="bash" name="bash"></a><span class=
+                    "term"><span class=
+                    "command"><strong>bash</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    A widely-used command interpreter; it performs many types
+                    of expansions and substitutions on a given command line
+                    before executing it, thus making this interpreter a
+                    powerful tool
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="bashbug" name="bashbug"></a><span class=
+                    "term"><span class=
+                    "command"><strong>bashbug</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    A shell script to help the user compose and mail standard
+                    formatted bug reports concerning <span class=
+                    "command"><strong>bash</strong></span>
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="sh" name="sh"></a><span class="term"><span class=
+                    "command"><strong>sh</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    A symlink to the <span class=
+                    "command"><strong>bash</strong></span> program; when
+                    invoked as <span class=
+                    "command"><strong>sh</strong></span>, <span class=
+                    "command"><strong>bash</strong></span> tries to mimic the
+                    startup behavior of historical versions of <span class=
+                    "command"><strong>sh</strong></span> as closely as
+                    possible, while conforming to the POSIX standard as well
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="readline.html" title=
+          "Readline-6.2">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Readline-6.2
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="libtool.html" title=
+          "Libtool-2.4.2">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Libtool-2.4.2
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter06.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 6. &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072; &#1073;&#1072;&#1079;&#1086;&#1074;&#1099;&#1093; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1099;&#1093; &#1087;&#1072;&#1082;&#1077;&#1090;&#1086;&#1074;">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

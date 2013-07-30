@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      5.22. Gettext-0.18.2
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="lfs" id="lfs-7.3">
+    <div class="navheader">
+      <h4>
+        Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3
+      </h4>
+      <h3>
+        &#1043;&#1083;&#1072;&#1074;&#1072; 5. Constructing a Temporary
+        System
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="gawk.html" title=
+          "Gawk-4.0.2">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Gawk-4.0.2
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="grep.html" title=
+          "Grep-2.14">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Grep-2.14
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter05.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 5. Constructing a Temporary System">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+    <div class="wrap" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-tools-gettext" name="ch-tools-gettext"></a>5.22.
+        Gettext-0.18.2
+      </h1>
+      <div class="package" lang="en" xml:lang="en">
+        <p>
+          The Gettext package contains utilities for internationalization and
+          localization. These allow programs to be compiled with NLS (Native
+          Language Support), enabling them to output messages in the user's
+          native language.
+        </p>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1055;&#1088;&#1080;&#1073;&#1083;&#1080;&#1079;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1077;
+              &#1074;&#1088;&#1077;&#1084;&#1103;
+              &#1089;&#1073;&#1086;&#1088;&#1082;&#1080;:</strong>
+              <span class="segbody">0.6 SBU</span>
+            </div>
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1058;&#1088;&#1077;&#1073;&#1091;&#1077;&#1090;
+              &#1089;&#1074;&#1086;&#1073;&#1086;&#1076;&#1085;&#1086;&#1075;&#1086;
+              &#1084;&#1077;&#1089;&#1090;&#1072; &#1085;&#1072;
+              &#1076;&#1080;&#1089;&#1082;&#1077;:</strong> <span class=
+              "segbody">101 MB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="installation" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          5.22.1. Installation of Gettext
+        </h2>
+        <p>
+          For our temporary set of tools, we only need to build and install
+          one binary from Gettext.
+        </p>
+        <p>
+          Prepare Gettext for compilation:
+        </p>
+        <pre class="userinput">
+<kbd class="command">cd gettext-tools
+EMACS="no" ./configure --prefix=/tools --disable-shared</kbd>
+</pre>
+        <div class="variablelist">
+          <p class="title">
+            <b>The meaning of the configure option:</b>
+          </p>
+          <dl>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>EMACS="no"</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This prevents the configure script from determining where to
+                install Emacs Lisp files as the test is known to hang on some
+                hosts.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--disable-shared</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                We do not need to install any of the shared Gettext libraries
+                at this time, therefore there is no need to build them.
+              </p>
+            </dd>
+          </dl>
+        </div>
+        <p>
+          Compile the package:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make -C gnulib-lib
+make -C src msgfmt</kbd>
+</pre>
+        <p>
+          As only one binary has been compiled, it is not possible to run the
+          test suite without compiling additional support libraries from the
+          Gettext package. It is therefore not recommended to attempt to run
+          the test suite at this stage.
+        </p>
+        <p>
+          Install the <span class="command"><strong>msgfmt</strong></span>
+          binary:
+        </p>
+        <pre class="userinput">
+<kbd class="command">cp -v src/msgfmt /tools/bin</kbd>
+</pre>
+      </div>
+      <div class="content" lang="en" xml:lang="en">
+        <p>
+          &#1055;&#1086;&#1076;&#1088;&#1086;&#1073;&#1085;&#1072;&#1103;
+          &#1080;&#1085;&#1092;&#1086;&#1088;&#1084;&#1072;&#1094;&#1080;&#1103;
+          &#1086;&#1073; &#1101;&#1090;&#1086;&#1084;
+          &#1087;&#1072;&#1082;&#1077;&#1090;&#1077;
+          &#1088;&#1072;&#1089;&#1087;&#1086;&#1083;&#1086;&#1078;&#1077;&#1085;&#1072;
+          &#1074; <a class="xref" href=
+          "../chapter06/gettext.html#contents-gettext" title=
+          "6.44.2. &#1057;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1077; Gettext">
+          &#1056;&#1072;&#1079;&#1076;&#1077;&#1083;&nbsp;6.44.2,
+          «&#1057;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1077;
+          Gettext.»</a>
+        </p>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="gawk.html" title=
+          "Gawk-4.0.2">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Gawk-4.0.2
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="grep.html" title=
+          "Grep-2.14">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Grep-2.14
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter05.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 5. Constructing a Temporary System">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

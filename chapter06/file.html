@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      6.12. File-5.13
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="lfs" id="lfs-7.3">
+    <div class="navheader">
+      <h4>
+        Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3
+      </h4>
+      <h3>
+        &#1043;&#1083;&#1072;&#1074;&#1072; 6.
+        &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;
+        &#1073;&#1072;&#1079;&#1086;&#1074;&#1099;&#1093;
+        &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1099;&#1093;
+        &#1087;&#1072;&#1082;&#1077;&#1090;&#1086;&#1074;
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="zlib.html" title=
+          "Zlib-1.2.7">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Zlib-1.2.7
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="binutils.html" title=
+          "Binutils-2.23.1">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Binutils-2.23.1
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter06.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 6. &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072; &#1073;&#1072;&#1079;&#1086;&#1074;&#1099;&#1093; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1099;&#1093; &#1087;&#1072;&#1082;&#1077;&#1090;&#1086;&#1074;">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+    <div class="wrap" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-system-file" name="ch-system-file"></a>6.12. File-5.13
+      </h1>
+      <div class="package" lang="en" xml:lang="en">
+        <p>
+          The File package contains a utility for determining the type of a
+          given file or files.
+        </p>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1055;&#1088;&#1080;&#1073;&#1083;&#1080;&#1079;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1077;
+              &#1074;&#1088;&#1077;&#1084;&#1103;
+              &#1089;&#1073;&#1086;&#1088;&#1082;&#1080;:</strong>
+              <span class="segbody">0.1 SBU</span>
+            </div>
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1058;&#1088;&#1077;&#1073;&#1091;&#1077;&#1090;
+              &#1089;&#1074;&#1086;&#1073;&#1086;&#1076;&#1085;&#1086;&#1075;&#1086;
+              &#1084;&#1077;&#1089;&#1090;&#1072; &#1085;&#1072;
+              &#1076;&#1080;&#1089;&#1082;&#1077;:</strong> <span class=
+              "segbody">12.5 MB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="installation" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          6.12.1.
+          &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;
+          File
+        </h2>
+        <p>
+          &#1055;&#1086;&#1076;&#1075;&#1086;&#1090;&#1086;&#1074;&#1080;&#1084;
+          File &#1082;
+          &#1082;&#1086;&#1084;&#1087;&#1080;&#1083;&#1103;&#1094;&#1080;&#1080;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">./configure --prefix=/usr</kbd>
+</pre>
+        <p>
+          C&#1082;&#1086;&#1084;&#1087;&#1080;&#1083;&#1080;&#1088;&#1091;&#1077;&#1084;
+          &#1087;&#1072;&#1082;&#1077;&#1090;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make</kbd>
+</pre>
+        <p>
+          &#1063;&#1090;&#1086;&#1073;&#1099;
+          &#1079;&#1072;&#1087;&#1091;&#1089;&#1090;&#1080;&#1090;&#1100;
+          &#1090;&#1077;&#1089;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077;
+          &#1087;&#1072;&#1082;&#1077;&#1090;&#1072;,
+          &#1074;&#1099;&#1087;&#1086;&#1083;&#1085;&#1080;&#1090;&#1077;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make check</kbd>
+</pre>
+        <p>
+          &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1080;&#1084;
+          &#1087;&#1072;&#1082;&#1077;&#1090;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make install</kbd>
+</pre>
+      </div>
+      <div class="content" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          <a id="contents-file" name="contents-file"></a>6.12.2.
+          &#1057;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1077;
+          File
+        </h2>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1083;&#1077;&#1085;&#1085;&#1099;&#1077;
+              &#1087;&#1088;&#1086;&#1075;&#1088;&#1072;&#1084;&#1084;&#1099;:</strong>
+              <span class="segbody">file</span>
+            </div>
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1083;&#1077;&#1085;&#1085;&#1072;&#1103;
+              &#1073;&#1080;&#1073;&#1083;&#1080;&#1086;&#1090;&#1077;&#1082;&#1072;:</strong>
+              <span class="segbody">libmagic.{a,so}</span>
+            </div>
+          </div>
+        </div>
+        <div class="variablelist">
+          <h3>
+            &#1050;&#1088;&#1072;&#1090;&#1082;&#1086;&#1077;
+            &#1086;&#1087;&#1080;&#1089;&#1072;&#1085;&#1080;&#1077;
+          </h3>
+          <table border="0">
+            <col align="left" valign="top" />
+            <tbody>
+              <tr>
+                <td>
+                  <p>
+                    <a id="file" name="file"></a><span class=
+                    "term"><span class=
+                    "command"><strong>file</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Tries to classify each given file; it does this by
+                    performing several tests&mdash;file system tests, magic
+                    number tests, and language tests
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="libmagic" name="libmagic"></a><span class=
+                    "term"><code class="filename">libmagic</code></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Contains routines for magic number recognition, used by
+                    the <span class="command"><strong>file</strong></span>
+                    program
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="zlib.html" title=
+          "Zlib-1.2.7">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Zlib-1.2.7
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="binutils.html" title=
+          "Binutils-2.23.1">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Binutils-2.23.1
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter06.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 6. &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072; &#1073;&#1072;&#1079;&#1086;&#1074;&#1099;&#1093; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1099;&#1093; &#1087;&#1072;&#1082;&#1077;&#1090;&#1086;&#1074;">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

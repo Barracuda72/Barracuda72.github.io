@@ -1,0 +1,332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      6.38. Autoconf-2.69
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="lfs" id="lfs-7.3">
+    <div class="navheader">
+      <h4>
+        Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3
+      </h4>
+      <h3>
+        &#1043;&#1083;&#1072;&#1074;&#1072; 6.
+        &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;
+        &#1073;&#1072;&#1079;&#1086;&#1074;&#1099;&#1093;
+        &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1099;&#1093;
+        &#1087;&#1072;&#1082;&#1077;&#1090;&#1086;&#1074;
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="perl.html" title=
+          "Perl-5.16.2">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Perl-5.16.2
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="automake.html" title=
+          "Automake-1.13.1">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Automake-1.13.1
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter06.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 6. &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072; &#1073;&#1072;&#1079;&#1086;&#1074;&#1099;&#1093; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1099;&#1093; &#1087;&#1072;&#1082;&#1077;&#1090;&#1086;&#1074;">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+    <div class="wrap" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-system-autoconf" name="ch-system-autoconf"></a>6.38.
+        Autoconf-2.69
+      </h1>
+      <div class="package" lang="en" xml:lang="en">
+        <p>
+          The Autoconf package contains programs for producing shell scripts
+          that can automatically configure source code.
+        </p>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1055;&#1088;&#1080;&#1073;&#1083;&#1080;&#1079;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1077;
+              &#1074;&#1088;&#1077;&#1084;&#1103;
+              &#1089;&#1073;&#1086;&#1088;&#1082;&#1080;:</strong>
+              <span class="segbody">4.5 SBU</span>
+            </div>
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1058;&#1088;&#1077;&#1073;&#1091;&#1077;&#1090;
+              &#1089;&#1074;&#1086;&#1073;&#1086;&#1076;&#1085;&#1086;&#1075;&#1086;
+              &#1084;&#1077;&#1089;&#1090;&#1072; &#1085;&#1072;
+              &#1076;&#1080;&#1089;&#1082;&#1077;:</strong> <span class=
+              "segbody">17.1 MB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="installation" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          6.38.1.
+          &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;
+          Autoconf
+        </h2>
+        <p>
+          &#1055;&#1086;&#1076;&#1075;&#1086;&#1090;&#1086;&#1074;&#1080;&#1084;
+          Autoconf &#1082;
+          &#1082;&#1086;&#1084;&#1087;&#1080;&#1083;&#1103;&#1094;&#1080;&#1080;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">./configure --prefix=/usr</kbd>
+</pre>
+        <p>
+          C&#1082;&#1086;&#1084;&#1087;&#1080;&#1083;&#1080;&#1088;&#1091;&#1077;&#1084;
+          &#1087;&#1072;&#1082;&#1077;&#1090;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make</kbd>
+</pre>
+        <p>
+          &#1063;&#1090;&#1086;&#1073;&#1099;
+          &#1079;&#1072;&#1087;&#1091;&#1089;&#1090;&#1080;&#1090;&#1100;
+          &#1090;&#1077;&#1089;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077;
+          &#1087;&#1072;&#1082;&#1077;&#1090;&#1072;,
+          &#1074;&#1099;&#1087;&#1086;&#1083;&#1085;&#1080;&#1090;&#1077;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make check</kbd>
+</pre>
+        <p>
+          This takes a long time, about 4.7 SBUs. In addition, 6 tests are
+          skipped that use Automake. For full test coverage, Autoconf can be
+          re-tested after Automake has been installed.
+        </p>
+        <p>
+          &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1080;&#1084;
+          &#1087;&#1072;&#1082;&#1077;&#1090;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make install</kbd>
+</pre>
+      </div>
+      <div class="content" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          <a id="contents-autoconf" name="contents-autoconf"></a>6.38.2.
+          &#1057;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1077;
+          Autoconf
+        </h2>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1083;&#1077;&#1085;&#1085;&#1099;&#1077;
+              &#1087;&#1088;&#1086;&#1075;&#1088;&#1072;&#1084;&#1084;&#1099;:</strong>
+              <span class="segbody">autoconf, autoheader, autom4te,
+              autoreconf, autoscan, autoupdate, and ifnames</span>
+            </div>
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1083;&#1077;&#1085;&#1085;&#1099;&#1081;
+              &#1082;&#1072;&#1090;&#1072;&#1083;&#1086;&#1075;:</strong>
+              <span class="segbody">/usr/share/autoconf</span>
+            </div>
+          </div>
+        </div>
+        <div class="variablelist">
+          <h3>
+            &#1050;&#1088;&#1072;&#1090;&#1082;&#1086;&#1077;
+            &#1086;&#1087;&#1080;&#1089;&#1072;&#1085;&#1080;&#1077;
+          </h3>
+          <table border="0">
+            <col align="left" valign="top" />
+            <tbody>
+              <tr>
+                <td>
+                  <p>
+                    <a id="autoconf" name="autoconf"></a><span class=
+                    "term"><span class=
+                    "command"><strong>autoconf</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Produces shell scripts that automatically configure
+                    software source code packages to adapt to many kinds of
+                    Unix-like systems. The configuration scripts it produces
+                    are independent&mdash;running &#1074;&#1089;&#1077;
+                    &#1078;&#1077;
+                    &#1079;&#1072;&#1087;&#1091;&#1089;&#1090;&#1080;&#1090;&#1100;
+                    &#1090;&#1077;&#1089;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077;m
+                    does not require the <span class=
+                    "command"><strong>autoconf</strong></span> program.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="autoheader" name="autoheader"></a><span class=
+                    "term"><span class=
+                    "command"><strong>autoheader</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    A tool for creating template files of C <span class=
+                    "emphasis"><em>#define</em></span> statements for
+                    configure to use
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="autom4te" name="autom4te"></a><span class=
+                    "term"><span class=
+                    "command"><strong>autom4te</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    A wrapper for the M4 macro processor
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="autoreconf" name="autoreconf"></a><span class=
+                    "term"><span class=
+                    "command"><strong>autoreconf</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Automatically runs <span class=
+                    "command"><strong>autoconf</strong></span>, <span class=
+                    "command"><strong>autoheader</strong></span>,
+                    <span class="command"><strong>aclocal</strong></span>,
+                    <span class="command"><strong>automake</strong></span>,
+                    <span class="command"><strong>gettextize</strong></span>,
+                    and <span class=
+                    "command"><strong>libtoolize</strong></span> in the
+                    correct order to save time when changes are made to
+                    <span class="command"><strong>autoconf</strong></span>
+                    and <span class=
+                    "command"><strong>automake</strong></span> template files
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="autoscan" name="autoscan"></a><span class=
+                    "term"><span class=
+                    "command"><strong>autoscan</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Helps to create a <code class=
+                    "filename">configure.in</code> file for a software
+                    package; it examines the source files in a directory
+                    tree, searching them for common portability issues, and
+                    creates a <code class="filename">configure.scan</code>
+                    file that serves as as a preliminary <code class=
+                    "filename">configure.in</code> file for the package
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="autoupdate" name="autoupdate"></a><span class=
+                    "term"><span class=
+                    "command"><strong>autoupdate</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Modifies a <code class="filename">configure.in</code>
+                    file that still calls <span class=
+                    "command"><strong>autoconf</strong></span> macros by
+                    their old names to use the current macro names
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="ifnames" name="ifnames"></a><span class=
+                    "term"><span class=
+                    "command"><strong>ifnames</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Helps when writing <code class=
+                    "filename">configure.in</code> files for a software
+                    package; it prints the identifiers that the package uses
+                    in C preprocessor conditionals. If a package has already
+                    been set up to have some portability, this program can
+                    help determine what <span class=
+                    "command"><strong>configure</strong></span> needs to
+                    check for. It can also fill in gaps in a <code class=
+                    "filename">configure.in</code> file generated by
+                    <span class="command"><strong>autoscan</strong></span>
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="perl.html" title=
+          "Perl-5.16.2">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Perl-5.16.2
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="automake.html" title=
+          "Automake-1.13.1">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Automake-1.13.1
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter06.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 6. &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072; &#1073;&#1072;&#1079;&#1086;&#1074;&#1099;&#1093; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1099;&#1093; &#1087;&#1072;&#1082;&#1077;&#1090;&#1086;&#1074;">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

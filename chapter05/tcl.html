@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      5.10. Tcl-8.6.0
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="lfs" id="lfs-7.3">
+    <div class="navheader">
+      <h4>
+        Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3
+      </h4>
+      <h3>
+        &#1043;&#1083;&#1072;&#1074;&#1072; 5. Constructing a Temporary
+        System
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="gcc-pass2.html" title=
+          "GCC-4.7.2 - &#1064;&#1072;&#1075; 2">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            GCC-4.7.2 - &#1064;&#1072;&#1075; 2
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="expect.html" title=
+          "Expect-5.45">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Expect-5.45
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter05.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 5. Constructing a Temporary System">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+    <div class="wrap" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-tools-tcl" name="ch-tools-tcl"></a>5.10. Tcl-8.6.0
+      </h1>
+      <div class="package" lang="en" xml:lang="en">
+        <p>
+          &#1055;&#1072;&#1082;&#1077;&#1090; Tcl
+          &#1089;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1090; Tool
+          Command Language,
+          &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1103;&#1102;&#1097;&#1080;&#1081;
+          &#1103;&#1079;&#1099;&#1082;
+          &#1080;&#1085;&#1089;&#1090;&#1088;&#1091;&#1084;&#1077;&#1085;&#1090;&#1086;&#1074;.
+        </p>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1055;&#1088;&#1080;&#1073;&#1083;&#1080;&#1079;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1077;
+              &#1074;&#1088;&#1077;&#1084;&#1103;
+              &#1089;&#1073;&#1086;&#1088;&#1082;&#1080;:</strong>
+              <span class="segbody">0.4 SBU</span>
+            </div>
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1058;&#1088;&#1077;&#1073;&#1091;&#1077;&#1090;
+              &#1089;&#1074;&#1086;&#1073;&#1086;&#1076;&#1085;&#1086;&#1075;&#1086;
+              &#1084;&#1077;&#1089;&#1090;&#1072; &#1085;&#1072;
+              &#1076;&#1080;&#1089;&#1082;&#1077;:</strong> <span class=
+              "segbody">33 MB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="installation" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          5.10.1. Installation of Tcl
+        </h2>
+        <p>
+          This package and the next three (Expect, DejaGNU, and Check) are
+          installed to support running the test suites for GCC and Binutils
+          and other packages. Installing four packages for testing purposes
+          may seem excessive, but it is very reassuring, if not essential, to
+          know that the most important tools are working properly. Even if
+          the test suites are not run in this chapter (they are not
+          mandatory), these packages are required to run the test suites in
+          <a class="xref" href="../chapter06/chapter06.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 6. &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072; &#1073;&#1072;&#1079;&#1086;&#1074;&#1099;&#1093; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1099;&#1093; &#1087;&#1072;&#1082;&#1077;&#1090;&#1086;&#1074;">
+          &#1043;&#1083;&#1072;&#1074;&#1072; 6</a>.
+        </p>
+        <p>
+          Prepare Tcl for compilation:
+        </p>
+        <pre class="userinput">
+<kbd class="command">cd unix
+./configure --prefix=/tools</kbd>
+</pre>
+        <p>
+          Build the package:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make</kbd>
+</pre>
+        <p>
+          Compilation is now complete. As discussed earlier, running the test
+          suite is not mandatory for the temporary tools here in this
+          chapter. To run the Tcl test suite anyway, issue the following
+          command:
+        </p>
+        <pre class="userinput">
+<kbd class="command">TZ=UTC make test</kbd>
+</pre>
+        <p>
+          The Tcl test suite may experience failures under certain host
+          conditions that are not fully understood. Therefore, test suite
+          failures here are not surprising, and are not considered critical.
+          The <em class="parameter"><code>TZ=UTC</code></em> parameter sets
+          the time zone to Coordinated Universal Time (UTC), also known as
+          Greenwich Mean Time (GMT), but only for the duration of the test
+          suite run. This ensures that the clock tests are exercised
+          correctly. Details on the <code class="envar">TZ</code> environment
+          variable are provided in <a class="xref" href=
+          "../chapter07/chapter07.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 7. &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072; &#1079;&#1072;&#1075;&#1088;&#1091;&#1079;&#1086;&#1095;&#1085;&#1099;&#1093; &#1089;&#1082;&#1088;&#1080;&#1087;&#1090;&#1086;&#1074;">
+          &#1043;&#1083;&#1072;&#1074;&#1072; 7</a>.
+        </p>
+        <p>
+          Install the package:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make install</kbd>
+</pre>
+        <p>
+          Make the installed library writable so debugging symbols can be
+          removed later:
+        </p>
+        <pre class="userinput">
+<kbd class="command">chmod -v u+w /tools/lib/libtcl8.6.so</kbd>
+</pre>
+        <p>
+          Install Tcl's headers. The next package, Expect, requires them to
+          build.
+        </p>
+        <pre class="userinput">
+<kbd class="command">make install-private-headers</kbd>
+</pre>
+        <p>
+          Now make a necessary symbolic link:
+        </p>
+        <pre class="userinput">
+<kbd class="command">ln -sv tclsh8.6 /tools/bin/tclsh</kbd>
+</pre>
+      </div>
+      <div class="content" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          <a id="contents-tcl" name="contents-tcl"></a>5.10.2. Contents of
+          Tcl
+        </h2>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class="segtitle">Installed programs:</strong>
+              <span class="segbody">tclsh (link to tclsh8.6) and
+              tclsh8.6</span>
+            </div>
+            <div class="seg">
+              <strong class="segtitle">Installed library:</strong>
+              <span class="segbody">libtcl8.6.so, libtclstub8.6.a</span>
+            </div>
+          </div>
+        </div>
+        <div class="variablelist">
+          <h3>
+            Short Descriptions
+          </h3>
+          <table border="0">
+            <col align="left" valign="top" />
+            <tbody>
+              <tr>
+                <td>
+                  <p>
+                    <a id="tclsh8.6" name="tclsh8.6"></a><span class=
+                    "term"><span class=
+                    "command"><strong>tclsh8.6</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    The Tcl command shell
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="tclsh" name="tclsh"></a><span class=
+                    "term"><span class=
+                    "command"><strong>tclsh</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    A link to tclsh8.6
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="libtcl8.6.so" name="libtcl8.6.so"></a><span class=
+                    "term"><code class="filename">libtcl8.6.so</code></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    The Tcl library
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="libtclstub8.6.a" name=
+                    "libtclstub8.6.a"></a><span class="term"><code class=
+                    "filename">libtclstub8.6.a</code></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    The Tcl Stub library
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="gcc-pass2.html" title=
+          "GCC-4.7.2 - &#1064;&#1072;&#1075; 2">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            GCC-4.7.2 - &#1064;&#1072;&#1075; 2
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="expect.html" title=
+          "Expect-5.45">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Expect-5.45
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter05.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 5. Constructing a Temporary System">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

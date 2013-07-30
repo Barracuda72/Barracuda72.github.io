@@ -1,0 +1,457 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      7.2. General Network Configuration
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="lfs" id="lfs-7.3">
+    <div class="navheader">
+      <h4>
+        Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3
+      </h4>
+      <h3>
+        &#1043;&#1083;&#1072;&#1074;&#1072; 7.
+        &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;
+        &#1079;&#1072;&#1075;&#1088;&#1091;&#1079;&#1086;&#1095;&#1085;&#1099;&#1093;
+        &#1089;&#1082;&#1088;&#1080;&#1087;&#1090;&#1086;&#1074;
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="introduction.html" title=
+          "Introduction">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Introduction
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="hosts.html" title=
+          "&#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077; &#1092;&#1072;&#1081;&#1083;&#1072; /etc/hosts">
+          &#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            &#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077;
+            &#1092;&#1072;&#1081;&#1083;&#1072; /etc/hosts
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter07.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 7. &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072; &#1079;&#1072;&#1075;&#1088;&#1091;&#1079;&#1086;&#1095;&#1085;&#1099;&#1093; &#1089;&#1082;&#1088;&#1080;&#1087;&#1090;&#1086;&#1074;">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+    <div class="sect1" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-scripts-network" name="ch-scripts-network"></a>7.2. General
+        Network Configuration
+      </h1>
+      <p>
+        This section only applies if a network card is to be configured.
+      </p>
+      <p>
+        If a network card will not be used, there is likely no need to create
+        any configuration files relating to network cards. If that is the
+        case, you will need to remove the <code class=
+        "filename">network</code> symlinks from all run-level directories
+        (<code class="filename">/etc/rc.d/rc*.d</code>) after the bootscripts
+        are installed in <a class="xref" href="bootscripts.html" title=
+        "7.6. LFS-Bootscripts-20130123">&#1056;&#1072;&#1079;&#1076;&#1077;&#1083;&nbsp;7.6,
+        «LFS-Bootscripts-20130123»</a>.
+      </p>
+      <div class="sect2" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          <a id="stable-net-names" name="stable-net-names"></a>7.2.1.
+          Creating stable names for network interfaces
+        </h2>
+        <p>
+          If there is only one network interface in the system to be
+          configured, this section is optional, although it will never be
+          wrong to do it. In many cases (e.g. a laptop with a wireless and a
+          wired interface), accomplishing the configuration in this section
+          is necessary.
+        </p>
+        <p>
+          With Udev and modular network drivers, the network interface
+          numbering is not persistent across reboots by default, because the
+          drivers are loaded in parallel and, thus, in random order. For
+          example, on a computer having two network cards made by Intel and
+          Realtek, the network card manufactured by Intel may become
+          <code class="filename">eth0</code> and the Realtek card becomes
+          <code class="filename">eth1</code>. In some cases, after a reboot
+          the cards get renumbered the other way around. To avoid this, Udev
+          comes with a script and some rules to assign stable names to
+          network cards based on their MAC address.
+        </p>
+        <p>
+          The rules were pre-generated in the build instructions for
+          <span class="application">udev (systemd)</span> in the last
+          chapter. Inspect the <code class=
+          "filename">/etc/udev/rules.d/70-persistent-net.rules</code> file,
+          to find out which name was assigned to which network device:
+        </p>
+        <pre class="userinput">
+<kbd class="command">cat /etc/udev/rules.d/70-persistent-net.rules</kbd>
+</pre>
+        <div class="admon note">
+          <img alt=
+          "[&#1047;&#1072;&#1084;&#1077;&#1095;&#1072;&#1085;&#1080;&#1077;]"
+          src="../images/note.png" />
+          <h3>
+            &#1047;&#1072;&#1084;&#1077;&#1095;&#1072;&#1085;&#1080;&#1077;
+          </h3>
+          <p>
+            In some cases such as when MAC addresess have been assigned to a
+            network card manually or in a virtual environment such as Xen,
+            the network rules file may not have been generated because
+            addresses are not consistently assigned. In these cases, just
+            continue to the next section.
+          </p>
+        </div>
+        <p>
+          The file begins with a comment block followed by two lines for each
+          NIC. The first line for each NIC is a commented description showing
+          its hardware IDs (e.g. its PCI vendor and device IDs, if it's a PCI
+          card), along with its driver in parentheses, if the driver can be
+          found. Neither the hardware ID nor the driver is used to determine
+          which name to give an interface; this information is only for
+          reference. The second line is the Udev rule that matches this NIC
+          and actually assigns it a name.
+        </p>
+        <p>
+          All Udev rules are made up of several keys, separated by commas and
+          optional whitespace. This rule's keys and an explanation of each of
+          them are as follows:
+        </p>
+        <div class="itemizedlist">
+          <ul>
+            <li>
+              <p>
+                <code class="literal">SUBSYSTEM=="net"</code> - This tells
+                Udev to ignore devices that are not network cards.
+              </p>
+            </li>
+            <li>
+              <p>
+                <code class="literal">ACTION=="add"</code> - This tells Udev
+                to ignore this rule for a uevent that isn't an add ("remove"
+                and "change" uevents also happen, but don't need to rename
+                network interfaces).
+              </p>
+            </li>
+            <li>
+              <p>
+                <code class="literal">DRIVERS=="?*"</code> - This exists so
+                that Udev will ignore VLAN or bridge sub-interfaces (because
+                these sub-interfaces do not have drivers). These
+                sub-interfaces are skipped because the name that would be
+                assigned would collide with their parent devices.
+              </p>
+            </li>
+            <li>
+              <p>
+                <code class="literal">ATTR{address}</code> - The value of
+                this key is the NIC's MAC address.
+              </p>
+            </li>
+            <li>
+              <p>
+                <code class="literal">ATTR{type}=="1"</code> - This ensures
+                the rule only matches the primary interface in the case of
+                certain wireless drivers, which create multiple virtual
+                interfaces. The secondary interfaces are skipped for the same
+                reason that VLAN and bridge sub-interfaces are skipped: there
+                would be a name collision otherwise.
+              </p>
+            </li>
+            <li>
+              <p>
+                <code class="literal">KERNEL=="eth*"</code> - This key was
+                added to the Udev rule generator to handle machines that have
+                multiple network interfaces, all with the same MAC address
+                (the PS3 is one such machine). If the independent interfaces
+                have different basenames, this key will allow Udev to tell
+                them apart. This is generally not necessary for most Linux
+                From Scratch users, but does not hurt.
+              </p>
+            </li>
+            <li>
+              <p>
+                <code class="literal">NAME</code> - The value of this key is
+                the name that Udev will assign to this interface.
+              </p>
+            </li>
+          </ul>
+        </div>
+        <p>
+          The value of <code class="literal">NAME</code> is the important
+          part. Make sure you know which name has been assigned to each of
+          your network cards before proceeding, and be sure to use that
+          <code class="literal">NAME</code> value when creating your
+          configuration files below.
+        </p>
+      </div>
+      <div class="sect2" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          7.2.2. &#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077;
+          &#1092;&#1072;&#1081;&#1083;&#1086;&#1074;
+          &#1082;&#1086;&#1085;&#1092;&#1080;&#1075;&#1091;&#1088;&#1072;&#1094;&#1080;&#1080;
+          &#1089;&#1077;&#1090;&#1077;&#1074;&#1099;&#1093;
+          &#1080;&#1085;&#1090;&#1077;&#1088;&#1092;&#1077;&#1081;&#1089;&#1086;&#1074;
+        </h2>
+        <p>
+          Which interfaces are brought up and down by the network script
+          depends on the files in <code class=
+          "filename">/etc/sysconfig/</code>. This directory should contain a
+          file for each interface to be configured, such as <code class=
+          "filename">ifconfig.xyz</code>, where «<span class=
+          "quote">xyz</span>» is meaningful to the administrator such as the
+          device name (e.g. eth0). Inside this file are attributes to this
+          interface, such as its IP address(es), subnet masks, and so forth.
+          It is necessary that the stem of the filename be <span class=
+          "emphasis"><em>ifconfig</em></span>.
+        </p>
+        <p>
+          The following command creates a sample file for the <span class=
+          "emphasis"><em>eth0</em></span> device with a static IP address:
+        </p>
+        <pre class="userinput">
+<kbd class="command">cd /etc/sysconfig/
+cat &gt; ifconfig.eth0 &lt;&lt; "EOF"
+<code class="literal">ONBOOT=yes
+IFACE=eth0
+SERVICE=ipv4-static
+IP=192.168.1.1
+GATEWAY=192.168.1.2
+PREFIX=24
+BROADCAST=192.168.1.255</code>
+EOF</kbd>
+</pre>
+        <p>
+          The values of these variables must be changed in every file to
+          match the proper setup.
+        </p>
+        <p>
+          If the <code class="envar">ONBOOT</code> variable is set to
+          «<span class="quote">yes</span>» the network script will bring up
+          the Network Interface Card (NIC) during booting of the system. If
+          set to anything but «<span class="quote">yes</span>» the NIC will
+          be ignored by the network script and not be automatically brought
+          up. The interface can be manually started or stopped with the
+          <span class="command"><strong>ifup</strong></span> and <span class=
+          "command"><strong>ifdown</strong></span> commands.
+        </p>
+        <p>
+          The <code class="envar">IFACE</code> variable defines the interface
+          name, for example, eth0. It is required for all network device
+          configuration files.
+        </p>
+        <p>
+          The <code class="envar">SERVICE</code> variable defines the method
+          used for obtaining the IP address. The LFS-Bootscripts package has
+          a modular IP assignment format, and creating additional files in
+          the <code class="filename">/lib/services/</code> directory allows
+          other IP assignment methods. This is commonly used for Dynamic Host
+          Configuration Protocol (DHCP), which is addressed in the BLFS book.
+        </p>
+        <p>
+          The <code class="envar">GATEWAY</code> variable should contain the
+          default gateway IP address, if one is present. If not, then comment
+          out the variable entirely.
+        </p>
+        <p>
+          The <code class="envar">PREFIX</code> variable contains the number
+          of bits used in the subnet. Each octet in an IP address is 8 bits.
+          If the subnet's netmask is 255.255.255.0, then it is using the
+          first three octets (24 bits) to specify the network number. If the
+          netmask is 255.255.255.240, it would be using the first 28 bits.
+          Prefixes longer than 24 bits are commonly used by DSL and
+          cable-based Internet Service Providers (ISPs). In this example
+          (PREFIX=24), the netmask is 255.255.255.0. Adjust the <code class=
+          "envar">PREFIX</code> variable according to your specific subnet.i
+          If omitted, the PREFIX defaults to 24.
+        </p>
+        <p>
+          For more information see the <span class=
+          "command"><strong>ifup</strong></span> man page.
+        </p>
+      </div>
+      <div class="sect2" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          <a id="resolv.conf" name="resolv.conf"></a>7.2.3.
+          &#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077;
+          &#1092;&#1072;&#1081;&#1083;&#1072; /etc/resolv.conf
+        </h2>
+        <p>
+          &#1045;&#1089;&#1083;&#1080;
+          &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1072;
+          &#1073;&#1091;&#1076;&#1077;&#1090;
+          &#1087;&#1086;&#1076;&#1082;&#1083;&#1102;&#1095;&#1077;&#1085;&#1072;
+          &#1082; &#1089;&#1077;&#1090;&#1080;
+          &#1048;&#1085;&#1090;&#1077;&#1088;&#1085;&#1077;&#1090;,
+          &#1077;&#1081;
+          &#1087;&#1086;&#1085;&#1072;&#1076;&#1086;&#1073;&#1080;&#1090;&#1089;&#1103;
+          &#1080;&#1085;&#1092;&#1086;&#1088;&#1084;&#1072;&#1094;&#1080;&#1103;
+          &#1086; DNS (Domain Name Service,
+          &#1089;&#1083;&#1091;&#1078;&#1073;&#1077;
+          &#1076;&#1086;&#1084;&#1077;&#1085;&#1085;&#1099;&#1093;
+          &#1080;&#1084;&#1077;&#1085;) &#1076;&#1083;&#1103;
+          &#1087;&#1088;&#1077;&#1086;&#1073;&#1088;&#1072;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1103;
+          &#1080;&#1084;&#1077;&#1085;
+          &#1076;&#1086;&#1084;&#1077;&#1085;&#1086;&#1074;
+          &#1048;&#1085;&#1090;&#1077;&#1088;&#1085;&#1077;&#1090;&#1072;
+          &#1074; IP-&#1072;&#1076;&#1088;&#1077;&#1089;&#1072; &#1080;
+          &#1085;&#1072;&#1086;&#1073;&#1086;&#1088;&#1086;&#1090;.
+          &#1051;&#1091;&#1095;&#1096;&#1080;&#1084;
+          &#1089;&#1087;&#1086;&#1089;&#1086;&#1073;&#1086;&#1084;
+          &#1087;&#1088;&#1077;&#1076;&#1086;&#1089;&#1090;&#1072;&#1074;&#1080;&#1090;&#1100;
+          &#1077;&#1081; &#1101;&#1090;&#1091;
+          &#1080;&#1085;&#1092;&#1086;&#1088;&#1084;&#1072;&#1094;&#1080;&#1102;
+          &#1073;&#1091;&#1076;&#1077;&#1090;
+          &#1091;&#1082;&#1072;&#1079;&#1072;&#1090;&#1100;
+          &#1072;&#1076;&#1088;&#1077;&#1089;&#1072;
+          DNS-&#1089;&#1077;&#1088;&#1074;&#1077;&#1088;&#1086;&#1074;,
+          &#1082;&#1086;&#1090;&#1086;&#1088;&#1099;&#1077;
+          &#1042;&#1072;&#1084; &#1074;&#1099;&#1076;&#1072;&#1083;
+          &#1087;&#1088;&#1086;&#1074;&#1072;&#1081;&#1076;&#1077;&#1088;
+          &#1080;&#1083;&#1080;
+          &#1072;&#1076;&#1084;&#1080;&#1085;&#1080;&#1089;&#1090;&#1088;&#1072;&#1090;&#1086;&#1088;
+          &#1089;&#1077;&#1090;&#1080;, &#1074;
+          &#1092;&#1072;&#1081;&#1083;&#1077; <code class=
+          "filename">/etc/resolv.conf</code>.
+          &#1057;&#1086;&#1079;&#1076;&#1072;&#1076;&#1080;&#1084;
+          &#1101;&#1090;&#1086;&#1090; &#1092;&#1072;&#1081;&#1083;
+          &#1082;&#1086;&#1084;&#1072;&#1085;&#1076;&#1086;&#1081;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">cat &gt; /etc/resolv.conf &lt;&lt; "EOF"
+<code class=
+"literal"># &#1053;&#1072;&#1095;&#1072;&#1083;&#1086; /etc/resolv.conf
+
+domain <em class=
+"replaceable"><code>&lt;&#1048;&#1084;&#1103; &#1074;&#1072;&#1096;&#1077;&#1075;&#1086; &#1076;&#1086;&#1084;&#1077;&#1085;&#1072;&gt;</code></em>
+nameserver <em class=
+"replaceable"><code>&lt;IP-&#1072;&#1076;&#1088;&#1077;&#1089; &#1087;&#1077;&#1088;&#1074;&#1080;&#1095;&#1085;&#1086;&#1075;&#1086; &#1089;&#1077;&#1088;&#1074;&#1077;&#1088;&#1072; &#1080;&#1084;&#1077;&#1085;&gt;</code></em>
+nameserver <em class=
+"replaceable"><code>&lt;IP-&#1072;&#1076;&#1088;&#1077;&#1089; &#1074;&#1090;&#1086;&#1088;&#1080;&#1095;&#1085;&#1086;&#1075;&#1086; &#1089;&#1077;&#1088;&#1074;&#1077;&#1088;&#1072; &#1080;&#1084;&#1077;&#1085;&gt;</code></em>
+
+# &#1050;&#1086;&#1085;&#1077;&#1094; /etc/resolv.conf</code>
+EOF</kbd>
+</pre>
+        <p>
+          &#1057;&#1090;&#1088;&#1086;&#1082;&#1072; <code class=
+          "varname">domain</code> &#1084;&#1086;&#1078;&#1077;&#1090;
+          &#1073;&#1099;&#1090;&#1100;
+          &#1086;&#1087;&#1091;&#1097;&#1077;&#1085;&#1072;
+          &#1080;&#1083;&#1080;
+          &#1079;&#1072;&#1084;&#1077;&#1085;&#1077;&#1085;&#1072;
+          &#1085;&#1072; <code class="varname">search</code>.
+          &#1054;&#1073;&#1088;&#1072;&#1090;&#1080;&#1090;&#1077;&#1089;&#1100;
+          &#1082; &#1089;&#1090;&#1088;&#1072;&#1085;&#1080;&#1094;&#1077;
+          &#1089;&#1087;&#1088;&#1072;&#1074;&#1082;&#1080; &#1087;&#1086;
+          resolv.conf &#1079;&#1072; &#1073;&#1086;&#1083;&#1077;&#1077;
+          &#1087;&#1086;&#1076;&#1088;&#1086;&#1073;&#1085;&#1086;&#1081;
+          &#1080;&#1085;&#1092;&#1086;&#1088;&#1084;&#1072;&#1094;&#1080;&#1077;&#1081;.
+        </p>
+        <p>
+          &#1047;&#1072;&#1084;&#1077;&#1085;&#1080;&#1090;&#1077; <em class=
+          "replaceable"><code>&lt;IP-&#1072;&#1076;&#1088;&#1077;&#1089;
+          &#1089;&#1077;&#1088;&#1074;&#1077;&#1088;&#1072;
+          &#1080;&#1084;&#1077;&#1085;&gt;</code></em>
+          IP-&#1072;&#1076;&#1088;&#1077;&#1089;&#1086;&#1084;
+          &#1089;&#1072;&#1084;&#1086;&#1075;&#1086;
+          &#1087;&#1086;&#1076;&#1093;&#1086;&#1076;&#1103;&#1097;&#1077;&#1075;&#1086;
+          &#1085;&#1072; &#1042;&#1072;&#1096;
+          &#1074;&#1079;&#1075;&#1083;&#1103;&#1076;
+          DNS-&#1089;&#1077;&#1088;&#1074;&#1077;&#1088;&#1072;.
+          &#1047;&#1072;&#1095;&#1072;&#1089;&#1090;&#1091;&#1102;
+          &#1089;&#1090;&#1086;&#1080;&#1090;
+          &#1091;&#1082;&#1072;&#1079;&#1072;&#1090;&#1100;
+          &#1073;&#1086;&#1083;&#1077;&#1077;
+          &#1086;&#1076;&#1085;&#1086;&#1075;&#1086;
+          &#1089;&#1077;&#1088;&#1074;&#1077;&#1088;&#1072;
+          (&#1074;&#1090;&#1086;&#1088;&#1080;&#1095;&#1085;&#1099;&#1077;
+          &#1089;&#1077;&#1088;&#1074;&#1077;&#1088;&#1072;
+          &#1090;&#1088;&#1077;&#1073;&#1091;&#1102;&#1090;&#1089;&#1103;
+          &#1076;&#1083;&#1103;
+          &#1086;&#1073;&#1077;&#1089;&#1087;&#1077;&#1095;&#1077;&#1085;&#1080;&#1103;
+          &#1085;&#1072;&#1076;&#1077;&#1078;&#1085;&#1086;&#1089;&#1090;&#1080;).
+          &#1045;&#1089;&#1083;&#1080; &#1042;&#1099;
+          &#1093;&#1086;&#1090;&#1080;&#1090;&#1077;
+          &#1091;&#1082;&#1072;&#1079;&#1072;&#1090;&#1100;
+          &#1090;&#1086;&#1083;&#1100;&#1082;&#1086;
+          &#1086;&#1076;&#1080;&#1085;
+          DNS-&#1089;&#1077;&#1088;&#1074;&#1077;&#1088;,
+          &#1091;&#1076;&#1072;&#1083;&#1080;&#1090;&#1077;
+          &#1074;&#1090;&#1086;&#1088;&#1091;&#1102;
+          &#1089;&#1090;&#1088;&#1086;&#1082;&#1091; <span class=
+          "emphasis"><em>nameserver</em></span> &#1080;&#1079;
+          &#1092;&#1072;&#1081;&#1083;&#1072;.
+          IP-&#1072;&#1076;&#1088;&#1077;&#1089;
+          &#1084;&#1086;&#1078;&#1077;&#1090;
+          &#1090;&#1072;&#1082;&#1078;&#1077;
+          &#1087;&#1088;&#1080;&#1085;&#1072;&#1076;&#1083;&#1077;&#1078;&#1072;&#1090;&#1100;
+          &#1088;&#1086;&#1091;&#1090;&#1077;&#1088;&#1091;
+          &#1042;&#1072;&#1096;&#1077;&#1081;
+          &#1083;&#1086;&#1082;&#1072;&#1083;&#1100;&#1085;&#1086;&#1081;
+          &#1089;&#1077;&#1090;&#1080;.
+        </p>
+        <div class="admon note">
+          <img alt=
+          "[&#1047;&#1072;&#1084;&#1077;&#1095;&#1072;&#1085;&#1080;&#1077;]"
+          src="../images/note.png" />
+          <h3>
+            &#1047;&#1072;&#1084;&#1077;&#1095;&#1072;&#1085;&#1080;&#1077;
+          </h3>
+          <p>
+            &#1040;&#1076;&#1088;&#1077;&#1089;&#1072; Google Public IPv4 DNS
+            8.8.8.8 &#1080; 8.8.4.4.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="introduction.html" title=
+          "Introduction">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Introduction
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="hosts.html" title=
+          "&#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077; &#1092;&#1072;&#1081;&#1083;&#1072; /etc/hosts">
+          &#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            &#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077;
+            &#1092;&#1072;&#1081;&#1083;&#1072; /etc/hosts
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter07.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 7. &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072; &#1079;&#1072;&#1075;&#1088;&#1091;&#1079;&#1086;&#1095;&#1085;&#1099;&#1093; &#1089;&#1082;&#1088;&#1080;&#1087;&#1090;&#1086;&#1074;">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

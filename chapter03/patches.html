@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      3.3. Needed Patches
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="lfs" id="lfs-7.3">
+    <div class="navheader">
+      <h4>
+        Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3
+      </h4>
+      <h3>
+        &#1043;&#1083;&#1072;&#1074;&#1072; 3.
+        &#1055;&#1072;&#1082;&#1077;&#1090;&#1099; &#1080;
+        &#1087;&#1072;&#1090;&#1095;&#1080;
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="packages.html" title=
+          "&#1042;&#1089;&#1077; &#1087;&#1072;&#1082;&#1077;&#1090;&#1099;">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            &#1042;&#1089;&#1077; &#1087;&#1072;&#1082;&#1077;&#1090;&#1099;
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="../chapter04/chapter04.html" title=
+          "&#1055;&#1086;&#1089;&#1083;&#1077;&#1076;&#1085;&#1080;&#1077; &#1087;&#1088;&#1080;&#1075;&#1086;&#1090;&#1086;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103;">
+          &#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            &#1055;&#1086;&#1089;&#1083;&#1077;&#1076;&#1085;&#1080;&#1077;
+            &#1087;&#1088;&#1080;&#1075;&#1086;&#1090;&#1086;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103;
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter03.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 3. &#1055;&#1072;&#1082;&#1077;&#1090;&#1099; &#1080; &#1087;&#1072;&#1090;&#1095;&#1080;">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+    <div class="sect1" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="materials-patches" name="materials-patches"></a>3.3. Needed
+        Patches
+      </h1>
+      <p>
+        In addition to the packages, several patches are also required. These
+        patches correct any mistakes in the packages that should be fixed by
+        the maintainer. The patches also make small modifications to make the
+        packages easier to work with. The following patches will be needed to
+        build an LFS system:
+      </p>
+      <div class="materials">
+        <div class="variablelist">
+          <dl>
+            <dt>
+              <span class="term">Bash Upstream Fixes Patch - <span class=
+              "token">55 KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.3/bash-4.2-fixes-11.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.3/bash-4.2-fixes-11.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">366672f68e7cf214bdbef2ef14b13c23</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">Binutils Test Suite Patch - <span class=
+              "token">2.0 KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.3/binutils-2.23.1-testsuite_fix-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.3/binutils-2.23.1-testsuite_fix-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">cb47fae1bc572d45f4b0cff8ae8ecba8</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">Bzip2 Documentation Patch - <span class=
+              "token">1.6 KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.3/bzip2-1.0.6-install_docs-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.3/bzip2-1.0.6-install_docs-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">6a5ac7e89b791aae556de0f745916f7f</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">Coreutils Internationalization Fixes Patch -
+              <span class="token">132 KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.3/coreutils-8.21-i18n-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.3/coreutils-8.21-i18n-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">ada0ea6e1c00c4b7e0d634f49827943e</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">Flex Regression Tests Patch - <span class=
+              "token">2.8 KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.3/flex-2.5.37-bison-2.6.1-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.3/flex-2.5.37-bison-2.6.1-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">d5b001ef9bdbbe32e2f27576d97d8ff0</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">Kbd Backspace/Delete Fix Patch -
+              <span class="token">12 KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.3/kbd-1.15.5-backspace-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.3/kbd-1.15.5-backspace-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">f75cca16a38da6caa7d52151f7136895</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">Make Upstream Fixes Patch - <span class=
+              "token">10 KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.3/make-3.82-upstream_fixes-3.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.3/make-3.82-upstream_fixes-3.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">95027ab5b53d01699845d9b7e1dc878d</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">Perl Libc Patch - <span class="token">1.6
+              KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.3/perl-5.16.2-libc-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.3/perl-5.16.2-libc-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">daf5c64fd7311e924966842680535f8f</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">Readline Upstream Fixes Patch - <span class=
+              "token">1.3 KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.3/readline-6.2-fixes-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.3/readline-6.2-fixes-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">3c185f7b76001d3d0af614f6f2cd5dfa</code>
+              </p>
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        Total size of these patches: about 218.3 KB
+      </p>
+      <p>
+        In addition to the above required patches, there exist a number of
+        optional patches created by the LFS community. These optional patches
+        solve minor problems or enable functionality that is not enabled by
+        default. Feel free to peruse the patches database located at
+        <a class="ulink" href=
+        "http://www.linuxfromscratch.org/patches/downloads/">http://www.linuxfromscratch.org/patches/downloads/</a>
+        and acquire any additional patches to suit your system needs.
+      </p>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="packages.html" title=
+          "&#1042;&#1089;&#1077; &#1087;&#1072;&#1082;&#1077;&#1090;&#1099;">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            &#1042;&#1089;&#1077; &#1087;&#1072;&#1082;&#1077;&#1090;&#1099;
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="../chapter04/chapter04.html" title=
+          "&#1055;&#1086;&#1089;&#1083;&#1077;&#1076;&#1085;&#1080;&#1077; &#1087;&#1088;&#1080;&#1075;&#1086;&#1090;&#1086;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103;">
+          &#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            &#1055;&#1086;&#1089;&#1083;&#1077;&#1076;&#1085;&#1080;&#1077;
+            &#1087;&#1088;&#1080;&#1075;&#1086;&#1090;&#1086;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103;
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter03.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 3. &#1055;&#1072;&#1082;&#1077;&#1090;&#1099; &#1080; &#1087;&#1072;&#1090;&#1095;&#1080;">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

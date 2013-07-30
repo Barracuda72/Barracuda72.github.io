@@ -1,0 +1,385 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      6.60. Texinfo-5.0
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="lfs" id="lfs-7.3">
+    <div class="navheader">
+      <h4>
+        Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3
+      </h4>
+      <h3>
+        &#1043;&#1083;&#1072;&#1074;&#1072; 6.
+        &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;
+        &#1073;&#1072;&#1079;&#1086;&#1074;&#1099;&#1093;
+        &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1099;&#1093;
+        &#1087;&#1072;&#1082;&#1077;&#1090;&#1086;&#1074;
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="tar.html" title=
+          "Tar-1.26">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Tar-1.26
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="udev.html" title=
+          "Udev-197 (Extracted from systemd-197)">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Udev-197 (Extracted from systemd-197)
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter06.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 6. &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072; &#1073;&#1072;&#1079;&#1086;&#1074;&#1099;&#1093; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1099;&#1093; &#1087;&#1072;&#1082;&#1077;&#1090;&#1086;&#1074;">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+    <div class="wrap" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-system-texinfo" name="ch-system-texinfo"></a>6.60.
+        Texinfo-5.0
+      </h1>
+      <div class="package" lang="en" xml:lang="en">
+        <p>
+          The Texinfo package contains programs for reading, writing, and
+          converting info pages.
+        </p>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1055;&#1088;&#1080;&#1073;&#1083;&#1080;&#1079;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1077;
+              &#1074;&#1088;&#1077;&#1084;&#1103;
+              &#1089;&#1073;&#1086;&#1088;&#1082;&#1080;:</strong>
+              <span class="segbody">0.6 SBU</span>
+            </div>
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1058;&#1088;&#1077;&#1073;&#1091;&#1077;&#1090;
+              &#1089;&#1074;&#1086;&#1073;&#1086;&#1076;&#1085;&#1086;&#1075;&#1086;
+              &#1084;&#1077;&#1089;&#1090;&#1072; &#1085;&#1072;
+              &#1076;&#1080;&#1089;&#1082;&#1077;:</strong> <span class=
+              "segbody">101 MB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="installation" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          6.60.1.
+          &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;
+          Texinfo
+        </h2>
+        <p>
+          &#1055;&#1086;&#1076;&#1075;&#1086;&#1090;&#1086;&#1074;&#1080;&#1084;
+          Texinfo &#1082;
+          &#1082;&#1086;&#1084;&#1087;&#1080;&#1083;&#1103;&#1094;&#1080;&#1080;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">./configure --prefix=/usr</kbd>
+</pre>
+        <p>
+          C&#1082;&#1086;&#1084;&#1087;&#1080;&#1083;&#1080;&#1088;&#1091;&#1077;&#1084;
+          &#1087;&#1072;&#1082;&#1077;&#1090;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make</kbd>
+</pre>
+        <p>
+          &#1063;&#1090;&#1086;&#1073;&#1099;
+          &#1079;&#1072;&#1087;&#1091;&#1089;&#1090;&#1080;&#1090;&#1100;
+          &#1090;&#1077;&#1089;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077;
+          &#1087;&#1072;&#1082;&#1077;&#1090;&#1072;,
+          &#1074;&#1099;&#1087;&#1086;&#1083;&#1085;&#1080;&#1090;&#1077;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make check</kbd>
+</pre>
+        <p>
+          &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1080;&#1084;
+          &#1087;&#1072;&#1082;&#1077;&#1090;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make install</kbd>
+</pre>
+        <p>
+          Optionally, install the components belonging in a TeX installation:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make TEXMF=/usr/share/texmf install-tex</kbd>
+</pre>
+        <div class="variablelist">
+          <p class="title">
+            <b>The meaning of the make parameter:</b>
+          </p>
+          <dl>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>TEXMF=/usr/share/texmf</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                The <code class="envar">TEXMF</code> makefile variable holds
+                the location of the root of the TeX tree if, for example, a
+                TeX package will be installed later.
+              </p>
+            </dd>
+          </dl>
+        </div>
+        <p>
+          The Info documentation system uses a plain text file to hold its
+          list of menu entries. The file is located at <code class=
+          "filename">/usr/share/info/dir</code>. Unfortunately, due to
+          occasional problems in the Makefiles of various packages, it can
+          sometimes get out of sync with the info pages installed on the
+          system. If the <code class="filename">/usr/share/info/dir</code>
+          file ever needs to be recreated, the following optional commands
+          will accomplish the task:
+        </p>
+        <pre class="userinput">
+<kbd class="command">cd /usr/share/info
+rm -v dir
+for f in *
+do install-info $f dir 2&gt;/dev/null
+done</kbd>
+</pre>
+      </div>
+      <div class="content" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          <a id="contents-texinfo" name="contents-texinfo"></a>6.60.2.
+          &#1057;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1077;
+          Texinfo
+        </h2>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1083;&#1077;&#1085;&#1085;&#1099;&#1077;
+              &#1087;&#1088;&#1086;&#1075;&#1088;&#1072;&#1084;&#1084;&#1099;:</strong>
+              <span class="segbody">info, infokey, install-info, makeinfo,
+              pdftexi2dvi, pod2texi, texi2any, texi2dvi, texi2pdf, and
+              texindex</span>
+            </div>
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1083;&#1077;&#1085;&#1085;&#1099;&#1081;
+              &#1082;&#1072;&#1090;&#1072;&#1083;&#1086;&#1075;:</strong>
+              <span class="segbody">/usr/share/texinfo</span>
+            </div>
+          </div>
+        </div>
+        <div class="variablelist">
+          <h3>
+            &#1050;&#1088;&#1072;&#1090;&#1082;&#1086;&#1077;
+            &#1086;&#1087;&#1080;&#1089;&#1072;&#1085;&#1080;&#1077;
+          </h3>
+          <table border="0">
+            <col align="left" valign="top" />
+            <tbody>
+              <tr>
+                <td>
+                  <p>
+                    <a id="info" name="info"></a><span class=
+                    "term"><span class=
+                    "command"><strong>info</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Used to read info pages which are similar to man pages,
+                    but often go much deeper than just explaining all the
+                    available command line options. For example, compare
+                    <span class="command"><strong>man bison</strong></span>
+                    and <span class="command"><strong>info
+                    bison</strong></span>.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="infokey" name="infokey"></a><span class=
+                    "term"><span class=
+                    "command"><strong>infokey</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Compiles a source file containing Info customizations
+                    into a binary format
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="install-info" name="install-info"></a><span class=
+                    "term"><span class=
+                    "command"><strong>install-info</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Used to install info pages; it updates entries in the
+                    <span class="command"><strong>info</strong></span> index
+                    file
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="makeinfo" name="makeinfo"></a><span class=
+                    "term"><span class=
+                    "command"><strong>makeinfo</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Translates the given Texinfo source documents into info
+                    pages, plain text, or HTML
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="pdftexi2dvi" name="pdftexi2dvi"></a><span class=
+                    "term"><span class=
+                    "command"><strong>pdftexi2dvi</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Used to format the given Texinfo document into a Portable
+                    Document Format (PDF) file
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="pod2texi" name="pod2texi"></a><span class=
+                    "term"><span class=
+                    "command"><strong>pod2texi</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Converts Pod to Texinfo format
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="texi2any" name="texi2any"></a><span class=
+                    "term"><span class=
+                    "command"><strong>texi2any</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Translate Texinfo source documentation to various other
+                    formats
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="texi2dvi" name="texi2dvi"></a><span class=
+                    "term"><span class=
+                    "command"><strong>texi2dvi</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Used to format the given Texinfo document into a
+                    device-independent file that can be printed
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="texi2pdf" name="texi2pdf"></a><span class=
+                    "term"><span class=
+                    "command"><strong>texi2pdf</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Used to format the given Texinfo document into a Portable
+                    Document Format (PDF) file
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="texindex" name="texindex"></a><span class=
+                    "term"><span class=
+                    "command"><strong>texindex</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Used to sort Texinfo index files
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="tar.html" title=
+          "Tar-1.26">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Tar-1.26
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="udev.html" title=
+          "Udev-197 (Extracted from systemd-197)">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Udev-197 (Extracted from systemd-197)
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter06.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 6. &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072; &#1073;&#1072;&#1079;&#1086;&#1074;&#1099;&#1093; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1099;&#1093; &#1087;&#1072;&#1082;&#1077;&#1090;&#1086;&#1074;">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      &#1043;&#1083;&#1072;&#1074;&#1072; 7.
+      &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;
+      &#1079;&#1072;&#1075;&#1088;&#1091;&#1079;&#1086;&#1095;&#1085;&#1099;&#1093;
+      &#1089;&#1082;&#1088;&#1080;&#1087;&#1090;&#1086;&#1074;
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="lfs" id="lfs-7.3">
+    <div class="navheader">
+      <h4>
+        Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3
+      </h4>
+      <h3>
+        &#1063;&#1072;&#1089;&#1090;&#1100; III.
+        &#1057;&#1073;&#1086;&#1088;&#1082;&#1072;
+        &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1099; LFS
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="../chapter06/revisedchroot.html" title=
+          "Cleaning Up">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Cleaning Up
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="introduction.html" title=
+          "Introduction">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Introduction
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="../part3.html" title=
+          "&#1063;&#1072;&#1089;&#1090;&#1100; III. &#1057;&#1073;&#1086;&#1088;&#1082;&#1072; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1099; LFS">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+    <div class="chapter" lang="en" xml:lang="en">
+      <h1 class="chapter">
+        <a id="chapter-bootscripts" name="chapter-bootscripts"></a>7.
+        &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;
+        &#1079;&#1072;&#1075;&#1088;&#1091;&#1079;&#1086;&#1095;&#1085;&#1099;&#1093;
+        &#1089;&#1082;&#1088;&#1080;&#1087;&#1090;&#1086;&#1074;
+      </h1>
+      <div class="toc">
+        <h3>
+          &#1057;&#1086;&#1076;&#1077;&#1088;&#1078;&#1072;&#1085;&#1080;&#1077;
+        </h3>
+        <ul>
+          <li class="sect1">
+            <a href="introduction.html">Introduction</a>
+          </li>
+          <li class="sect1">
+            <a href="network.html">General Network Configuration</a>
+          </li>
+          <li class="sect1">
+            <a href=
+            "hosts.html">&#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077;
+            &#1092;&#1072;&#1081;&#1083;&#1072; /etc/hosts</a>
+          </li>
+          <li class="sect1">
+            <a href="udev.html">Device and Module Handling on an LFS
+            System</a>
+          </li>
+          <li class="sect1">
+            <a href=
+            "symlinks.html">&#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077;
+            &#1089;&#1086;&#1073;&#1089;&#1090;&#1074;&#1077;&#1085;&#1085;&#1099;&#1093;
+            &#1089;&#1089;&#1099;&#1083;&#1086;&#1082; &#1085;&#1072;
+            &#1091;&#1089;&#1090;&#1088;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072;</a>
+          </li>
+          <li class="sect1">
+            <a href="bootscripts.html">LFS-Bootscripts-20130123</a>
+          </li>
+          <li class="sect1">
+            <a href="usage.html">How Do These Bootscripts Work?</a>
+          </li>
+          <li class="sect1">
+            <a href=
+            "hostname.html">&#1053;&#1072;&#1089;&#1090;&#1088;&#1086;&#1081;&#1082;&#1072;
+            &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1086;&#1075;&#1086;
+            &#1080;&#1084;&#1077;&#1085;&#1080;
+            &#1082;&#1086;&#1084;&#1087;&#1100;&#1102;&#1090;&#1077;&#1088;&#1072;</a>
+          </li>
+          <li class="sect1">
+            <a href="setclock.html">Configuring the setclock Script</a>
+          </li>
+          <li class="sect1">
+            <a href=
+            "console.html">&#1053;&#1072;&#1089;&#1090;&#1088;&#1086;&#1081;&#1082;&#1072;
+            &#1082;&#1086;&#1085;&#1089;&#1086;&#1083;&#1080; Linux</a>
+          </li>
+          <li class="sect1">
+            <a href=
+            "sysklogd.html">&#1053;&#1072;&#1089;&#1090;&#1088;&#1086;&#1081;&#1082;&#1072;
+            &#1089;&#1082;&#1088;&#1080;&#1087;&#1090;&#1072; sysklogd</a>
+          </li>
+          <li class="sect1">
+            <a href="site.html">The rc.site File</a>
+          </li>
+          <li class="sect1">
+            <a href="profile.html">The Bash Shell Startup Files</a>
+          </li>
+          <li class="sect1">
+            <a href=
+            "inputrc.html">&#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077;
+            &#1092;&#1072;&#1081;&#1083;&#1072; /etc/inputrc</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="../chapter06/revisedchroot.html" title=
+          "Cleaning Up">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Cleaning Up
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="introduction.html" title=
+          "Introduction">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Introduction
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="../part3.html" title=
+          "&#1063;&#1072;&#1089;&#1090;&#1100; III. &#1057;&#1073;&#1086;&#1088;&#1082;&#1072; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1099; LFS">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

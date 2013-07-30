@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      5.27. Patch-2.7.1
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="lfs" id="lfs-7.3">
+    <div class="navheader">
+      <h4>
+        Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3
+      </h4>
+      <h3>
+        &#1043;&#1083;&#1072;&#1074;&#1072; 5. Constructing a Temporary
+        System
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="make.html" title=
+          "Make-3.82">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Make-3.82
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="perl.html" title=
+          "Perl-5.16.2">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Perl-5.16.2
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter05.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 5. Constructing a Temporary System">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+    <div class="wrap" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-tools-patch" name="ch-tools-patch"></a>5.27. Patch-2.7.1
+      </h1>
+      <div class="package" lang="en" xml:lang="en">
+        <p>
+          The Patch package contains a program for modifying or creating
+          files by applying a «<span class="quote">patch</span>» file
+          typically created by the <span class=
+          "command"><strong>diff</strong></span> program.
+        </p>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1055;&#1088;&#1080;&#1073;&#1083;&#1080;&#1079;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1077;
+              &#1074;&#1088;&#1077;&#1084;&#1103;
+              &#1089;&#1073;&#1086;&#1088;&#1082;&#1080;:</strong>
+              <span class="segbody">0.1 SBU</span>
+            </div>
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1058;&#1088;&#1077;&#1073;&#1091;&#1077;&#1090;
+              &#1089;&#1074;&#1086;&#1073;&#1086;&#1076;&#1085;&#1086;&#1075;&#1086;
+              &#1084;&#1077;&#1089;&#1090;&#1072; &#1085;&#1072;
+              &#1076;&#1080;&#1089;&#1082;&#1077;:</strong> <span class=
+              "segbody">3.4 MB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="installation" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          5.27.1.
+          &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;
+          Patch
+        </h2>
+        <p>
+          &#1055;&#1086;&#1076;&#1075;&#1086;&#1090;&#1086;&#1074;&#1080;&#1084;
+          Patch &#1082;
+          &#1082;&#1086;&#1084;&#1087;&#1080;&#1083;&#1103;&#1094;&#1080;&#1080;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">./configure --prefix=/tools</kbd>
+</pre>
+        <p>
+          C&#1082;&#1086;&#1084;&#1087;&#1080;&#1083;&#1080;&#1088;&#1091;&#1077;&#1084;
+          &#1087;&#1072;&#1082;&#1077;&#1090;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make</kbd>
+</pre>
+        <p>
+          &#1050;&#1086;&#1084;&#1087;&#1080;&#1083;&#1103;&#1094;&#1080;&#1103;
+          &#1079;&#1072;&#1074;&#1077;&#1088;&#1096;&#1077;&#1085;&#1072;.
+          &#1050;&#1072;&#1082;
+          &#1075;&#1086;&#1074;&#1086;&#1088;&#1080;&#1083;&#1086;&#1089;&#1100;
+          &#1088;&#1072;&#1085;&#1077;&#1077;,
+          &#1085;&#1077;&#1086;&#1073;&#1103;&#1079;&#1072;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;
+          &#1074;&#1099;&#1087;&#1086;&#1083;&#1085;&#1103;&#1090;&#1100;
+          &#1090;&#1077;&#1089;&#1090;&#1099; &#1076;&#1083;&#1103;
+          &#1074;&#1088;&#1077;&#1084;&#1077;&#1085;&#1085;&#1099;&#1093;
+          &#1080;&#1085;&#1089;&#1090;&#1088;&#1091;&#1084;&#1077;&#1085;&#1090;&#1086;&#1074;
+          &#1074; &#1101;&#1090;&#1086;&#1081;
+          &#1075;&#1083;&#1072;&#1074;&#1077;.
+          &#1063;&#1090;&#1086;&#1073;&#1099; &#1074;&#1089;&#1077;
+          &#1078;&#1077;
+          &#1079;&#1072;&#1087;&#1091;&#1089;&#1090;&#1080;&#1090;&#1100;
+          &#1090;&#1077;&#1089;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077;
+          Patch,
+          &#1074;&#1099;&#1087;&#1086;&#1083;&#1085;&#1080;&#1090;&#1077;
+          &#1089;&#1083;&#1077;&#1076;&#1091;&#1102;&#1097;&#1091;&#1102;
+          &#1082;&#1086;&#1084;&#1072;&#1085;&#1076;&#1091;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make check</kbd>
+</pre>
+        <p>
+          &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1080;&#1084;
+          &#1087;&#1072;&#1082;&#1077;&#1090;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make install</kbd>
+</pre>
+      </div>
+      <div class="content" lang="en" xml:lang="en">
+        <p>
+          &#1055;&#1086;&#1076;&#1088;&#1086;&#1073;&#1085;&#1072;&#1103;
+          &#1080;&#1085;&#1092;&#1086;&#1088;&#1084;&#1072;&#1094;&#1080;&#1103;
+          &#1086;&#1073; &#1101;&#1090;&#1086;&#1084;
+          &#1087;&#1072;&#1082;&#1077;&#1090;&#1077;
+          &#1088;&#1072;&#1089;&#1087;&#1086;&#1083;&#1086;&#1078;&#1077;&#1085;&#1072;
+          &#1074; <a class="xref" href=
+          "../chapter06/patch.html#contents-patch" title=
+          "6.56.2. Contents of Patch">&#1056;&#1072;&#1079;&#1076;&#1077;&#1083;&nbsp;6.56.2,
+          «Contents of Patch.»</a>
+        </p>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="make.html" title=
+          "Make-3.82">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Make-3.82
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="perl.html" title=
+          "Perl-5.16.2">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Perl-5.16.2
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter05.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 5. Constructing a Temporary System">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

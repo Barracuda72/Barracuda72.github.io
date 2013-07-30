@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      6.2. Preparing Virtual Kernel File Systems
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="lfs" id="lfs-7.3">
+    <div class="navheader">
+      <h4>
+        Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3
+      </h4>
+      <h3>
+        &#1043;&#1083;&#1072;&#1074;&#1072; 6.
+        &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;
+        &#1073;&#1072;&#1079;&#1086;&#1074;&#1099;&#1093;
+        &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1099;&#1093;
+        &#1087;&#1072;&#1082;&#1077;&#1090;&#1086;&#1074;
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="introduction.html" title=
+          "Introduction">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Introduction
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="pkgmgt.html" title=
+          "Package Management">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Package Management
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter06.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 6. &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072; &#1073;&#1072;&#1079;&#1086;&#1074;&#1099;&#1093; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1099;&#1093; &#1087;&#1072;&#1082;&#1077;&#1090;&#1086;&#1074;">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+    <div class="sect1" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-system-kernfs" name="ch-system-kernfs"></a>6.2. Preparing
+        Virtual Kernel File Systems
+      </h1>
+      <p>
+        Various file systems exported by the kernel are used to communicate
+        to and from the kernel itself. These file systems are virtual in that
+        no disk space is used for them. The content of the file systems
+        resides in memory.
+      </p>
+      <p>
+        Begin by creating directories onto which the file systems will be
+        mounted:
+      </p>
+      <pre class="userinput">
+<kbd class="command">mkdir -v $LFS/{dev,proc,sys}</kbd>
+</pre>
+      <div class="sect2" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          6.2.1. Creating Initial Device Nodes
+        </h2>
+        <p>
+          When the kernel boots the system, it requires the presence of a few
+          device nodes, in particular the <code class=
+          "filename">console</code> and <code class="filename">null</code>
+          devices. The device nodes must be created on the hard disk so that
+          they are available before <span class=
+          "command"><strong>udevd</strong></span> has been started, and
+          additionally when Linux is started with <em class=
+          "parameter"><code>init=/bin/bash</code></em>. Create the devices by
+          running the following commands:
+        </p>
+        <pre class="userinput">
+<kbd class="command">mknod -m 600 $LFS/dev/console c 5 1
+mknod -m 666 $LFS/dev/null c 1 3</kbd>
+</pre>
+      </div>
+      <div class="sect2" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          <a id="ch-system-bindmount" name="ch-system-bindmount"></a>6.2.2.
+          Mounting and Populating /dev
+        </h2>
+        <p>
+          The recommended method of populating the <code class=
+          "filename">/dev</code> directory with devices is to mount a virtual
+          filesystem (such as <code class="systemitem">tmpfs</code>) on the
+          <code class="filename">/dev</code> directory, and allow the devices
+          to be created dynamically on that virtual filesystem as they are
+          detected or accessed. Device creation is generally done during the
+          boot process by Udev. Since this new system does not yet have Udev
+          and has not yet been booted, it is necessary to mount and populate
+          <code class="filename">/dev</code> manually. This is accomplished
+          by bind mounting the host system's <code class=
+          "filename">/dev</code> directory. A bind mount is a special type of
+          mount that allows you to create a mirror of a directory or mount
+          point to some other location. Use &#1074;&#1089;&#1077;
+          &#1078;&#1077;
+          &#1079;&#1072;&#1087;&#1091;&#1089;&#1090;&#1080;&#1090;&#1100;
+          &#1090;&#1077;&#1089;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077;
+          following command to achieve this:
+        </p>
+        <pre class="userinput">
+<kbd class="command">mount -v --bind /dev $LFS/dev</kbd>
+</pre>
+      </div>
+      <div class="sect2" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          <a id="ch-system-kernfsmount" name=
+          "ch-system-kernfsmount"></a>6.2.3. Mounting Virtual Kernel File
+          Systems
+        </h2>
+        <p>
+          Now mount the remaining virtual kernel filesystems:
+        </p>
+        <pre class="userinput">
+<kbd class="command">mount -vt devpts devpts $LFS/dev/pts
+mount -vt proc proc $LFS/proc
+mount -vt sysfs sysfs $LFS/sys</kbd>
+</pre>
+        <p>
+          In some host systems, <code class="filename">/dev/shm</code> is a
+          symbolic link to <code class="filename">/run/shm</code>. Inside a
+          chroot environment, this temporary file system needs to be mounted
+          separate from the host file system:
+        </p>
+        <pre class="userinput">
+<kbd class="command">if [ -h $LFS/dev/shm ]; then
+  link=$(readlink $LFS/dev/shm)
+  mkdir -p $LFS/$link
+  mount -vt tmpfs shm $LFS/$link
+  unset link
+else
+  mount -vt tmpfs shm $LFS/dev/shm
+fi</kbd>
+</pre>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="introduction.html" title=
+          "Introduction">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Introduction
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="pkgmgt.html" title=
+          "Package Management">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Package Management
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter06.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 6. &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072; &#1073;&#1072;&#1079;&#1086;&#1074;&#1099;&#1093; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1099;&#1093; &#1087;&#1072;&#1082;&#1077;&#1090;&#1086;&#1074;">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

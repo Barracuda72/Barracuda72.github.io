@@ -1,0 +1,447 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      5.7. Glibc-2.17
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="lfs" id="lfs-7.3">
+    <div class="navheader">
+      <h4>
+        Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3
+      </h4>
+      <h3>
+        &#1043;&#1083;&#1072;&#1074;&#1072; 5. Constructing a Temporary
+        System
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="linux-headers.html" title=
+          "Linux-3.8.1 API Headers">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Linux-3.8.1 API Headers
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="binutils-pass2.html" title=
+          "Binutils-2.23.1 - &#1064;&#1072;&#1075; 2">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Binutils-2.23.1 - &#1064;&#1072;&#1075; 2
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter05.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 5. Constructing a Temporary System">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+    <div class="wrap" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-tools-glibc" name="ch-tools-glibc"></a>5.7. Glibc-2.17
+      </h1>
+      <div class="package" lang="en" xml:lang="en">
+        <p>
+          The Glibc package contains the main C library. This library
+          provides &#1074;&#1089;&#1077; &#1078;&#1077;
+          &#1079;&#1072;&#1087;&#1091;&#1089;&#1090;&#1080;&#1090;&#1100;
+          &#1090;&#1077;&#1089;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077;
+          basic routines for allocating memory, searching directories,
+          opening and closing files, reading and writing files, string
+          handling, pattern matching, arithmetic, and so on.
+        </p>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1055;&#1088;&#1080;&#1073;&#1083;&#1080;&#1079;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1077;
+              &#1074;&#1088;&#1077;&#1084;&#1103;
+              &#1089;&#1073;&#1086;&#1088;&#1082;&#1080;:</strong>
+              <span class="segbody">5.4 SBU</span>
+            </div>
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1058;&#1088;&#1077;&#1073;&#1091;&#1077;&#1090;
+              &#1089;&#1074;&#1086;&#1073;&#1086;&#1076;&#1085;&#1086;&#1075;&#1086;
+              &#1084;&#1077;&#1089;&#1090;&#1072; &#1085;&#1072;
+              &#1076;&#1080;&#1089;&#1082;&#1077;:</strong> <span class=
+              "segbody">554 MB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="installation" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          5.7.1. Installation of Glibc
+        </h2>
+        <p>
+          In some cases, particularly LFS 7.1, the rpc headers were not
+          installed properly. Test to see if they are installed in the host
+          system and install if they are not:
+        </p>
+        <pre class="userinput">
+<kbd class="command">if [ ! -r /usr/include/rpc/types.h ]; then
+  su -c 'mkdir -p /usr/include/rpc'
+  su -c 'cp -v sunrpc/rpc/*.h /usr/include/rpc'
+fi</kbd>
+</pre>
+        <p>
+          The Glibc documentation recommends building Glibc outside of the
+          source directory in a dedicated build directory:
+        </p>
+        <pre class="userinput">
+<kbd class="command">mkdir -v ../glibc-build
+cd ../glibc-build</kbd>
+</pre>
+        <p>
+          Next, prepare Glibc for compilation:
+        </p>
+        <pre class="userinput">
+<kbd class="command">../glibc-2.17/configure                             \
+      --prefix=/tools                                 \
+      --host=$LFS_TGT                                 \
+      --build=$(../glibc-2.17/scripts/config.guess) \
+      --disable-profile                               \
+      --enable-kernel=2.6.25                          \
+      --with-headers=/tools/include                   \
+      libc_cv_forced_unwind=yes                       \
+      libc_cv_ctors_header=yes                        \
+      libc_cv_c_cleanup=yes</kbd>
+</pre>
+        <div class="variablelist">
+          <p class="title">
+            <b>The meaning of the configure options:</b>
+          </p>
+          <dl>
+            <dt>
+              <span class="term"><em class="parameter"><code>--host=$LFS_TGT,
+              --build=$(../glibc-2.17/scripts/config.guess)</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                The combined effect of these switches is that Glibc's build
+                system configures itself to cross-compile, using the
+                cross-linker and cross-compiler in <code class=
+                "filename">/tools</code>.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--disable-profile</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This builds the libraries without profiling information. Omit
+                this option if profiling on the temporary tools is necessary.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--enable-kernel=2.6.25</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This tells Glibc to compile the library with support for
+                2.6.25 and later Linux kernels. Workarounds for older kernels
+                are not enabled.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--with-headers=/tools/include</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This tells Glibc to compile itself against the headers
+                recently installed to the tools directory, so that it knows
+                exactly what features the kernel has and can optimize itself
+                accordingly.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>libc_cv_forced_unwind=yes</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                The linker installed during <a class="xref" href=
+                "binutils-pass1.html" title=
+                "5.4. Binutils-2.23.1 - &#1064;&#1072;&#1075; 1">&#1056;&#1072;&#1079;&#1076;&#1077;&#1083;&nbsp;5.4,
+                «Binutils-2.23.1 - &#1064;&#1072;&#1075; 1»</a> was
+                cross-compiled and as such cannot be used until Glibc has
+                been installed. This means that the configure test for
+                force-unwind support will fail, as it relies on a working
+                linker. The libc_cv_forced_unwind=yes variable is passed in
+                order to inform <span class=
+                "command"><strong>configure</strong></span> that force-unwind
+                support is available without it having to run the test.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>libc_cv_c_cleanup=yes</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                Simlarly, we pass libc_cv_c_cleanup=yes through to the
+                <span class="command"><strong>configure</strong></span>
+                script so that the test is skipped and C cleanup handling
+                support is configured.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>libc_cv_ctors_header=yes</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                Simlarly, we pass libc_cv_ctors_header=yes through to the
+                <span class="command"><strong>configure</strong></span>
+                script so that the test is skipped and gcc constructor
+                support is configured.
+              </p>
+            </dd>
+          </dl>
+        </div>
+        <p>
+          During this stage the following warning might appear:
+        </p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <pre class="screen">
+<code class="computeroutput">configure: WARNING:
+*** These auxiliary programs are missing or
+*** incompatible versions: msgfmt
+*** some features will be disabled.
+*** Check the INSTALL file for required versions.</code>
+</pre>
+          </blockquote>
+        </div>
+        <p>
+          &#1054;&#1090;&#1089;&#1091;&#1090;&#1089;&#1090;&#1074;&#1091;&#1102;&#1097;&#1072;&#1103;
+          &#1080;&#1083;&#1080;
+          &#1085;&#1077;&#1089;&#1086;&#1074;&#1084;&#1077;&#1089;&#1090;&#1080;&#1084;&#1072;&#1103;
+          &#1091;&#1090;&#1080;&#1083;&#1080;&#1090;&#1072; <span class=
+          "command"><strong>msgfmt</strong></span>
+          &#1086;&#1073;&#1099;&#1095;&#1085;&#1086; &#1085;&#1077;
+          &#1087;&#1088;&#1080;&#1074;&#1086;&#1076;&#1080;&#1090; &#1082;
+          &#1087;&#1088;&#1086;&#1073;&#1083;&#1077;&#1084;&#1072;&#1084;.
+          &#1069;&#1090;&#1072;
+          &#1087;&#1088;&#1086;&#1075;&#1088;&#1072;&#1084;&#1084;&#1072;
+          &#1103;&#1074;&#1083;&#1103;&#1077;&#1090;&#1089;&#1103;
+          &#1095;&#1072;&#1089;&#1090;&#1100;&#1102;
+          &#1087;&#1072;&#1082;&#1077;&#1090;&#1072; Gettext,
+          &#1082;&#1086;&#1090;&#1086;&#1088;&#1099;&#1081;
+          &#1076;&#1086;&#1083;&#1078;&#1077;&#1085;
+          &#1087;&#1088;&#1077;&#1076;&#1086;&#1089;&#1090;&#1072;&#1074;&#1083;&#1103;&#1090;&#1100;&#1089;&#1103;
+          &#1093;&#1086;&#1089;&#1090;-&#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1086;&#1081;.
+        </p>
+        <p>
+          C&#1082;&#1086;&#1084;&#1087;&#1080;&#1083;&#1080;&#1088;&#1091;&#1077;&#1084;
+          &#1087;&#1072;&#1082;&#1077;&#1090;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make</kbd>
+</pre>
+        <p>
+          &#1069;&#1090;&#1086;&#1090; &#1087;&#1072;&#1082;&#1077;&#1090;
+          &#1087;&#1086;&#1089;&#1090;&#1072;&#1074;&#1083;&#1103;&#1077;&#1090;&#1089;&#1103;
+          &#1089; &#1085;&#1072;&#1073;&#1086;&#1088;&#1086;&#1084;
+          &#1090;&#1077;&#1089;&#1090;&#1086;&#1074;,
+          &#1086;&#1076;&#1085;&#1072;&#1082;&#1086;, &#1084;&#1099;
+          &#1085;&#1077; c&#1084;&#1086;&#1078;&#1077;&#1084; &#1080;&#1093;
+          &#1079;&#1072;&#1087;&#1091;&#1089;&#1090;&#1080;&#1090;&#1100;
+          &#1089;&#1077;&#1081;&#1095;&#1072;&#1089;,
+          &#1087;&#1086;&#1089;&#1082;&#1086;&#1083;&#1100;&#1082;&#1091;
+          &#1077;&#1097;&#1077; &#1085;&#1077;
+          &#1091;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1080;&#1083;&#1080;
+          &#1082;&#1086;&#1084;&#1087;&#1080;&#1083;&#1103;&#1090;&#1086;&#1088;
+          C++.
+        </p>
+        <div class="admon note">
+          <img alt=
+          "[&#1047;&#1072;&#1084;&#1077;&#1095;&#1072;&#1085;&#1080;&#1077;]"
+          src="../images/note.png" />
+          <h3>
+            &#1047;&#1072;&#1084;&#1077;&#1095;&#1072;&#1085;&#1080;&#1077;
+          </h3>
+          <p>
+            &#1044;&#1083;&#1103;
+            &#1091;&#1089;&#1087;&#1077;&#1096;&#1085;&#1086;&#1075;&#1086;
+            &#1074;&#1099;&#1087;&#1086;&#1083;&#1085;&#1077;&#1085;&#1080;&#1103;
+            &#1090;&#1077;&#1089;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1103;
+            &#1090;&#1072;&#1082;&#1078;&#1077;
+            &#1085;&#1077;&#1086;&#1073;&#1093;&#1086;&#1076;&#1080;&#1084;&#1086;
+            &#1091;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1080;&#1090;&#1100;
+            &#1076;&#1072;&#1085;&#1085;&#1099;&#1077;
+            &#1083;&#1086;&#1082;&#1072;&#1083;&#1077;&#1081;.
+            &#1044;&#1072;&#1085;&#1085;&#1099;&#1077;
+            &#1083;&#1086;&#1082;&#1072;&#1083;&#1077;&#1081;
+            &#1087;&#1088;&#1077;&#1076;&#1086;&#1089;&#1090;&#1072;&#1074;&#1083;&#1103;&#1102;&#1090;
+            &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1077;
+            &#1080;&#1085;&#1092;&#1086;&#1088;&#1084;&#1072;&#1094;&#1080;&#1102;
+            &#1086; &#1090;&#1086;&#1084;, &#1074;
+            &#1082;&#1072;&#1082;&#1086;&#1084;
+            &#1092;&#1086;&#1088;&#1084;&#1072;&#1090;&#1077;
+            &#1085;&#1077;&#1086;&#1073;&#1093;&#1086;&#1076;&#1080;&#1084;&#1086;
+            &#1086;&#1089;&#1091;&#1097;&#1077;&#1089;&#1090;&#1074;&#1083;&#1103;&#1090;&#1100;
+            &#1074;&#1074;&#1086;&#1076; &#1080;
+            &#1074;&#1099;&#1074;&#1086;&#1076; &#1076;&#1072;&#1090;&#1099;,
+            &#1074;&#1088;&#1077;&#1084;&#1077;&#1085;&#1080; &#1080;
+            &#1074;&#1072;&#1083;&#1102;&#1090;. &#1045;&#1089;&#1083;&#1080;
+            &#1090;&#1077;&#1089;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077;
+            (&#1082;&#1072;&#1082; &#1080;
+            &#1088;&#1077;&#1082;&#1086;&#1084;&#1077;&#1085;&#1076;&#1091;&#1077;&#1090;&#1089;&#1103;)
+            &#1085;&#1077; &#1073;&#1091;&#1076;&#1077;&#1090;
+            &#1079;&#1072;&#1087;&#1091;&#1089;&#1082;&#1072;&#1090;&#1100;&#1089;&#1103;
+            &#1074; &#1101;&#1090;&#1086;&#1081;
+            &#1075;&#1083;&#1072;&#1074;&#1077;, &#1085;&#1077;&#1090;
+            &#1085;&#1091;&#1078;&#1076;&#1099;
+            &#1091;&#1089;&#1090;&#1072;&#1085;&#1072;&#1074;&#1083;&#1080;&#1074;&#1072;&#1090;&#1100;
+            &#1083;&#1086;&#1082;&#1072;&#1083;&#1080;
+            &#1089;&#1077;&#1081;&#1095;&#1072;&#1089;.
+            &#1053;&#1077;&#1086;&#1073;&#1093;&#1086;&#1076;&#1080;&#1084;&#1099;&#1077;
+            &#1083;&#1086;&#1082;&#1072;&#1083;&#1080;
+            &#1073;&#1091;&#1076;&#1091;&#1090;
+            &#1091;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1083;&#1077;&#1085;&#1099;
+            &#1074;
+            &#1089;&#1083;&#1077;&#1076;&#1091;&#1102;&#1097;&#1077;&#1081;
+            &#1075;&#1083;&#1072;&#1074;&#1077;.
+            &#1063;&#1090;&#1086;&#1073;&#1099; &#1074;&#1089;&#1077;
+            &#1078;&#1077;
+            &#1091;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1080;&#1090;&#1100;
+            &#1083;&#1086;&#1082;&#1072;&#1083;&#1080; Glibc,
+            &#1089;&#1083;&#1077;&#1076;&#1091;&#1081;&#1090;&#1077;
+            &#1080;&#1085;&#1089;&#1090;&#1088;&#1091;&#1082;&#1094;&#1080;&#1103;&#1084;
+            &#1080;&#1079; <a class="xref" href="../chapter06/glibc.html"
+            title=
+            "6.9. Glibc-2.17">&#1056;&#1072;&#1079;&#1076;&#1077;&#1083;&nbsp;6.9,
+            «Glibc-2.17.»</a>
+          </p>
+        </div>
+        <p>
+          &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1080;&#1084;
+          &#1087;&#1072;&#1082;&#1077;&#1090;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make install</kbd>
+</pre>
+        <div class="admon caution">
+          <img alt=
+          "[&#1055;&#1088;&#1077;&#1076;&#1086;&#1089;&#1090;&#1077;&#1088;&#1077;&#1078;&#1077;&#1085;&#1080;&#1077;]"
+          src="../images/caution.png" />
+          <h3>
+            &#1055;&#1088;&#1077;&#1076;&#1086;&#1089;&#1090;&#1077;&#1088;&#1077;&#1078;&#1077;&#1085;&#1080;&#1077;
+          </h3>
+          <p>
+            At this point, it is imperative to stop and ensure that the basic
+            functions (compiling and linking) of the new toolchain are
+            working as expected. To perform a sanity check, run the following
+            commands:
+          </p>
+          <pre class="userinput">
+<kbd class="command">echo 'main(){}' &gt; dummy.c
+$LFS_TGT-gcc dummy.c
+readelf -l a.out | grep ': /tools'</kbd>
+</pre>
+          <p>
+            If everything is working correctly, there should be no errors,
+            and the output of the last command will be of the form:
+          </p>
+          <pre class="screen">
+<code class=
+"computeroutput">[Requesting program interpreter: /tools/lib/ld-linux.so.2]</code>
+</pre>
+          <p>
+            Note that <code class="filename">/tools/lib</code>, or
+            <code class="filename">/tools/lib64</code> for 64-bit machines
+            appears as the prefix of the dynamic linker.
+          </p>
+          <p>
+            If the output is not shown as above or there was no output at
+            all, then something is wrong. Investigate and retrace the steps
+            to find out where the problem is and correct it. This issue must
+            be resolved before continuing on.
+          </p>
+          <p>
+            Once all is well, clean up the test files:
+          </p>
+          <pre class="userinput">
+<kbd class="command">rm -v dummy.c a.out</kbd>
+</pre>
+        </div>
+        <div class="admon note">
+          <img alt=
+          "[&#1047;&#1072;&#1084;&#1077;&#1095;&#1072;&#1085;&#1080;&#1077;]"
+          src="../images/note.png" />
+          <h3>
+            &#1047;&#1072;&#1084;&#1077;&#1095;&#1072;&#1085;&#1080;&#1077;
+          </h3>
+          <p>
+            Building Binutils in the next section will serve as an additional
+            check that the toolchain has been built properly. If Binutils
+            fails to build, it is an indication that something has gone wrong
+            with the previous Binutils, GCC, or Glibc installations.
+          </p>
+        </div>
+      </div>
+      <div class="content" lang="en" xml:lang="en">
+        <p>
+          &#1055;&#1086;&#1076;&#1088;&#1086;&#1073;&#1085;&#1072;&#1103;
+          &#1080;&#1085;&#1092;&#1086;&#1088;&#1084;&#1072;&#1094;&#1080;&#1103;
+          &#1086;&#1073; &#1101;&#1090;&#1086;&#1084;
+          &#1087;&#1072;&#1082;&#1077;&#1090;&#1077;
+          &#1088;&#1072;&#1089;&#1087;&#1086;&#1083;&#1086;&#1078;&#1077;&#1085;&#1072;
+          &#1074; <a class="xref" href=
+          "../chapter06/glibc.html#contents-glibc" title=
+          "6.9.4. &#1057;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1077; Glibc">
+          &#1056;&#1072;&#1079;&#1076;&#1077;&#1083;&nbsp;6.9.4,
+          «&#1057;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1077;
+          Glibc.»</a>
+        </p>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="linux-headers.html" title=
+          "Linux-3.8.1 API Headers">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Linux-3.8.1 API Headers
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="binutils-pass2.html" title=
+          "Binutils-2.23.1 - &#1064;&#1072;&#1075; 2">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Binutils-2.23.1 - &#1064;&#1072;&#1075; 2
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter05.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 5. Constructing a Temporary System">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

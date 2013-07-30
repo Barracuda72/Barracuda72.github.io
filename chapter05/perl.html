@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      5.28. Perl-5.16.2
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="lfs" id="lfs-7.3">
+    <div class="navheader">
+      <h4>
+        Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3
+      </h4>
+      <h3>
+        &#1043;&#1083;&#1072;&#1074;&#1072; 5. Constructing a Temporary
+        System
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="patch.html" title=
+          "Patch-2.7.1">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Patch-2.7.1
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="sed.html" title=
+          "Sed-4.2.2">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Sed-4.2.2
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter05.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 5. Constructing a Temporary System">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+    <div class="wrap" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-tools-perl" name="ch-tools-perl"></a>5.28. Perl-5.16.2
+      </h1>
+      <div class="package" lang="en" xml:lang="en">
+        <p>
+          The Perl package contains the Practical Extraction and Report
+          Language.
+        </p>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1055;&#1088;&#1080;&#1073;&#1083;&#1080;&#1079;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1077;
+              &#1074;&#1088;&#1077;&#1084;&#1103;
+              &#1089;&#1073;&#1086;&#1088;&#1082;&#1080;:</strong>
+              <span class="segbody">1.8 SBU</span>
+            </div>
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1058;&#1088;&#1077;&#1073;&#1091;&#1077;&#1090;
+              &#1089;&#1074;&#1086;&#1073;&#1086;&#1076;&#1085;&#1086;&#1075;&#1086;
+              &#1084;&#1077;&#1089;&#1090;&#1072; &#1085;&#1072;
+              &#1076;&#1080;&#1089;&#1082;&#1077;:</strong> <span class=
+              "segbody">237 MB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="installation" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          5.28.1. Installation of Perl
+        </h2>
+        <p>
+          First apply the following patch to adapt some hard-wired paths to
+          the C library:
+        </p>
+        <pre class="userinput">
+<kbd class="command">patch -Np1 -i ../perl-5.16.2-libc-1.patch</kbd>
+</pre>
+        <p>
+          Prepare Perl for compilation:
+        </p>
+        <pre class="userinput">
+<kbd class="command">sh Configure -des -Dprefix=/tools</kbd>
+</pre>
+        <p>
+          Build the package:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make</kbd>
+</pre>
+        <p>
+          Although Perl comes with a test suite, it would be better to wait
+          until it is installed in the next chapter.
+        </p>
+        <p>
+          Only a few of the utilities and libraries, need to be installed at
+          this time:
+        </p>
+        <pre class="userinput">
+<kbd class="command">cp -v perl cpan/podlators/pod2man /tools/bin
+mkdir -pv /tools/lib/perl5/5.16.2
+cp -Rv lib/* /tools/lib/perl5/5.16.2</kbd>
+</pre>
+      </div>
+      <div class="content" lang="en" xml:lang="en">
+        <p>
+          Details on this package are located in <a class="xref" href=
+          "../chapter06/perl.html#contents-perl" title=
+          "6.37.2. &#1057;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1077; Perl">
+          &#1056;&#1072;&#1079;&#1076;&#1077;&#1083;&nbsp;6.37.2,
+          «&#1057;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1077;
+          Perl.»</a>
+        </p>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="patch.html" title=
+          "Patch-2.7.1">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Patch-2.7.1
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="sed.html" title=
+          "Sed-4.2.2">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Sed-4.2.2
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter05.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 5. Constructing a Temporary System">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

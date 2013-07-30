@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      5.17. Coreutils-8.21
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="lfs" id="lfs-7.3">
+    <div class="navheader">
+      <h4>
+        Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3
+      </h4>
+      <h3>
+        &#1043;&#1083;&#1072;&#1074;&#1072; 5. Constructing a Temporary
+        System
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="bzip2.html" title=
+          "Bzip2-1.0.6">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Bzip2-1.0.6
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="diffutils.html" title=
+          "Diffutils-3.2">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Diffutils-3.2
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter05.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 5. Constructing a Temporary System">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+    <div class="wrap" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-tools-coreutils" name="ch-tools-coreutils"></a>5.17.
+        Coreutils-8.21
+      </h1>
+      <div class="package" lang="en" xml:lang="en">
+        <p>
+          The Coreutils package contains utilities for showing and setting
+          the basic system characteristics.
+        </p>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1055;&#1088;&#1080;&#1073;&#1083;&#1080;&#1079;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1077;
+              &#1074;&#1088;&#1077;&#1084;&#1103;
+              &#1089;&#1073;&#1086;&#1088;&#1082;&#1080;:</strong>
+              <span class="segbody">0.8 SBU</span>
+            </div>
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1058;&#1088;&#1077;&#1073;&#1091;&#1077;&#1090;
+              &#1089;&#1074;&#1086;&#1073;&#1086;&#1076;&#1085;&#1086;&#1075;&#1086;
+              &#1084;&#1077;&#1089;&#1090;&#1072; &#1085;&#1072;
+              &#1076;&#1080;&#1089;&#1082;&#1077;:</strong> <span class=
+              "segbody">133 MB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="installation" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          5.17.1. Installation of Coreutils
+        </h2>
+        <p>
+          Prepare Coreutils for compilation:
+        </p>
+        <pre class="userinput">
+<kbd class=
+"command">./configure --prefix=/tools --enable-install-program=hostname</kbd>
+</pre>
+        <div class="variablelist">
+          <p class="title">
+            <b>The meaning of the configure options:</b>
+          </p>
+          <dl>
+            <dt>
+              <span class="term"><code class=
+              "envar">--enable-install-program=hostname</code></span>
+            </dt>
+            <dd>
+              <p>
+                This enables the <span class=
+                "command"><strong>hostname</strong></span> binary to be built
+                and installed &ndash; it is disabled by default but is
+                required by the Perl test suite.
+              </p>
+            </dd>
+          </dl>
+        </div>
+        <p>
+          Compile the package:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make</kbd>
+</pre>
+        <p>
+          Compilation is now complete. As discussed earlier, running the test
+          suite is not mandatory for the temporary tools here in this
+          chapter. To run the Coreutils test suite anyway, issue the
+          following command:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make RUN_EXPENSIVE_TESTS=yes check</kbd>
+</pre>
+        <p>
+          The <em class="parameter"><code>RUN_EXPENSIVE_TESTS=yes</code></em>
+          parameter tells the test suite to run several additional tests that
+          are considered relatively expensive (in terms of CPU power and
+          memory usage) on some platforms, but generally are not a problem on
+          Linux.
+        </p>
+        <p>
+          Install the package:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make install</kbd>
+</pre>
+      </div>
+      <div class="content" lang="en" xml:lang="en">
+        <p>
+          &#1055;&#1086;&#1076;&#1088;&#1086;&#1073;&#1085;&#1072;&#1103;
+          &#1080;&#1085;&#1092;&#1086;&#1088;&#1084;&#1072;&#1094;&#1080;&#1103;
+          &#1086;&#1073; &#1101;&#1090;&#1086;&#1084;
+          &#1087;&#1072;&#1082;&#1077;&#1090;&#1077;
+          &#1088;&#1072;&#1089;&#1087;&#1086;&#1083;&#1086;&#1078;&#1077;&#1085;&#1072;
+          &#1074; <a class="xref" href=
+          "../chapter06/coreutils.html#contents-coreutils" title=
+          "6.27.2. &#1057;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1077; Coreutils">
+          &#1056;&#1072;&#1079;&#1076;&#1077;&#1083;&nbsp;6.27.2,
+          «&#1057;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1077;
+          Coreutils.»</a>
+        </p>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="bzip2.html" title=
+          "Bzip2-1.0.6">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Bzip2-1.0.6
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="diffutils.html" title=
+          "Diffutils-3.2">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            Diffutils-3.2
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter05.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 5. Constructing a Temporary System">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      D.8. /etc/rc.d/init.d/setclock
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="lfs" id="lfs-7.3">
+    <div class="navheader">
+      <h4>
+        Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3
+      </h4>
+      <h3>
+        &#1055;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1077;
+        D.
+        &#1047;&#1072;&#1075;&#1088;&#1091;&#1079;&#1086;&#1095;&#1085;&#1099;&#1077;
+        &#1080;
+        &#1082;&#1086;&#1085;&#1092;&#1080;&#1075;&#1091;&#1088;&#1072;&#1094;&#1080;&#1086;&#1085;&#1085;&#1099;&#1077;
+        &#1089;&#1082;&#1088;&#1080;&#1087;&#1090;&#1099;
+        &#1074;&#1077;&#1088;&#1089;&#1080;&#1080; 20130123
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="apds07.html" title=
+          "/etc/rc.d/init.d/swap">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            /etc/rc.d/init.d/swap
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="apds09.html" title=
+          "/etc/rc.d/init.d/checkfs">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            /etc/rc.d/init.d/checkfs
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="scripts.html" title=
+          "&#1055;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1077; D. &#1047;&#1072;&#1075;&#1088;&#1091;&#1079;&#1086;&#1095;&#1085;&#1099;&#1077; &#1080; &#1082;&#1086;&#1085;&#1092;&#1080;&#1075;&#1091;&#1088;&#1072;&#1094;&#1080;&#1086;&#1085;&#1085;&#1099;&#1077; &#1089;&#1082;&#1088;&#1080;&#1087;&#1090;&#1099; &#1074;&#1077;&#1088;&#1089;&#1080;&#1080; 20130123">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+    <div class="wrap" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="setclock" name="setclock"></a>D.8. /etc/rc.d/init.d/setclock
+      </h1>
+      <pre class="screen">
+#!/bin/sh
+########################################################################
+# Begin setclock
+#
+# Description : Setting Linux Clock
+#
+# Authors     : Gerard Beekmans - gerard@linuxfromscratch.org
+#               DJ Lucas - dj@linuxfromscratch.org
+# Update      : Bruce Dubbs - bdubbs@linuxfromscratch.org
+#
+# Version     : LFS 7.0
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:            
+# Required-Start:
+# Should-Start:        modules
+# Required-Stop:
+# Should-Stop:         $syslog
+# Default-Start:       S
+# Default-Stop:
+# Short-Description:   Stores and restores time from the hardware clock
+# Description:         On boot, system time is obtained from hwclock.  The
+#                      hardware clock can also be set on shutdown.
+# X-LFS-Provided-By:   LFS BLFS
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+[ -r /etc/sysconfig/clock ] &amp;&amp; . /etc/sysconfig/clock
+
+
+case "${UTC}" in
+   yes|true|1)
+      CLOCKPARAMS="${CLOCKPARAMS} --utc"
+      ;;
+
+   no|false|0)
+      CLOCKPARAMS="${CLOCKPARAMS} --localtime"
+      ;;
+
+esac
+
+case ${1} in
+   start)
+      hwclock --hctosys ${CLOCKPARAMS} &gt;/dev/null
+      ;;
+
+   stop)
+      log_info_msg "Setting hardware clock..."
+      hwclock --systohc ${CLOCKPARAMS} &gt;/dev/null
+      evaluate_retval
+      ;;
+
+   *)
+      echo "Usage: ${0} {start|stop}"
+      exit 1
+      ;;
+
+esac
+
+exit 0
+</pre>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="apds07.html" title=
+          "/etc/rc.d/init.d/swap">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            /etc/rc.d/init.d/swap
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="apds09.html" title=
+          "/etc/rc.d/init.d/checkfs">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            /etc/rc.d/init.d/checkfs
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="scripts.html" title=
+          "&#1055;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1077; D. &#1047;&#1072;&#1075;&#1088;&#1091;&#1079;&#1086;&#1095;&#1085;&#1099;&#1077; &#1080; &#1082;&#1086;&#1085;&#1092;&#1080;&#1075;&#1091;&#1088;&#1072;&#1094;&#1080;&#1086;&#1085;&#1085;&#1099;&#1077; &#1089;&#1082;&#1088;&#1080;&#1087;&#1090;&#1099; &#1074;&#1077;&#1088;&#1089;&#1080;&#1080; 20130123">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

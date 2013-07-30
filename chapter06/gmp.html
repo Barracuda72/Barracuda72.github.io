@@ -1,0 +1,284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      6.14. GMP-5.1.1
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="lfs" id="lfs-7.3">
+    <div class="navheader">
+      <h4>
+        Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3
+      </h4>
+      <h3>
+        &#1043;&#1083;&#1072;&#1074;&#1072; 6.
+        &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;
+        &#1073;&#1072;&#1079;&#1086;&#1074;&#1099;&#1093;
+        &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1099;&#1093;
+        &#1087;&#1072;&#1082;&#1077;&#1090;&#1086;&#1074;
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="binutils.html" title=
+          "Binutils-2.23.1">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Binutils-2.23.1
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="mpfr.html" title=
+          "MPFR-3.1.1">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            MPFR-3.1.1
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter06.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 6. &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072; &#1073;&#1072;&#1079;&#1086;&#1074;&#1099;&#1093; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1099;&#1093; &#1087;&#1072;&#1082;&#1077;&#1090;&#1086;&#1074;">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+    <div class="wrap" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-system-gmp" name="ch-system-gmp"></a>6.14. GMP-5.1.1
+      </h1>
+      <div class="package" lang="en" xml:lang="en">
+        <p>
+          The GMP package contains math libraries. These have useful
+          functions for arbitrary precision arithmetic.
+        </p>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1055;&#1088;&#1080;&#1073;&#1083;&#1080;&#1079;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1077;
+              &#1074;&#1088;&#1077;&#1084;&#1103;
+              &#1089;&#1073;&#1086;&#1088;&#1082;&#1080;:</strong>
+              <span class="segbody">1.2 SBU</span>
+            </div>
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1058;&#1088;&#1077;&#1073;&#1091;&#1077;&#1090;
+              &#1089;&#1074;&#1086;&#1073;&#1086;&#1076;&#1085;&#1086;&#1075;&#1086;
+              &#1084;&#1077;&#1089;&#1090;&#1072; &#1085;&#1072;
+              &#1076;&#1080;&#1089;&#1082;&#1077;:</strong> <span class=
+              "segbody">50 MB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="installation" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          6.14.1.
+          &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072; GMP
+        </h2>
+        <div class="admon note">
+          <img alt=
+          "[&#1047;&#1072;&#1084;&#1077;&#1095;&#1072;&#1085;&#1080;&#1077;]"
+          src="../images/note.png" />
+          <h3>
+            &#1047;&#1072;&#1084;&#1077;&#1095;&#1072;&#1085;&#1080;&#1077;
+          </h3>
+          <p>
+            If you are building for 32-bit x86, but you have a CPU which is
+            capable of running 64-bit code <span class=
+            "emphasis"><em>and</em></span> you have specified <code class=
+            "envar">CFLAGS</code> in the environment, the configure script
+            will attempt to configure for 64-bits and fail. Avoid this by
+            invoking the configure command below with
+          </p>
+          <pre class="userinput">
+<kbd class="command"><em class=
+"parameter"><code>ABI=32</code></em> ./configure ...</kbd>
+</pre>
+        </div>
+        <p>
+          &#1055;&#1086;&#1076;&#1075;&#1086;&#1090;&#1086;&#1074;&#1080;&#1084;
+          GMP &#1082;
+          &#1082;&#1086;&#1084;&#1087;&#1080;&#1083;&#1103;&#1094;&#1080;&#1080;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">./configure --prefix=/usr --enable-cxx</kbd>
+</pre>
+        <div class="variablelist">
+          <p class="title">
+            <b>The meaning of the new configure options:</b>
+          </p>
+          <dl>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--enable-cxx</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This parameter enables C++ support
+              </p>
+            </dd>
+          </dl>
+        </div>
+        <p>
+          C&#1082;&#1086;&#1084;&#1087;&#1080;&#1083;&#1080;&#1088;&#1091;&#1077;&#1084;
+          &#1087;&#1072;&#1082;&#1077;&#1090;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make</kbd>
+</pre>
+        <div class="admon important">
+          <img alt="[&#1042;&#1072;&#1078;&#1085;&#1086;]" src=
+          "../images/important.png" />
+          <h3>
+            &#1042;&#1072;&#1078;&#1085;&#1086;
+          </h3>
+          <p>
+            The test suite for GMP in this section is considered critical. Do
+            not skip it under any circumstances.
+          </p>
+        </div>
+        <p>
+          Test the results:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make check 2&gt;&amp;1 | tee gmp-check-log</kbd>
+</pre>
+        <p>
+          Ensure that all 184 tests in the test suite passed. Check the
+          results by issuing the following command:
+        </p>
+        <pre class="userinput">
+<kbd class=
+"command">awk '/tests passed/{total+=$2} ; END{print total}' gmp-check-log</kbd>
+</pre>
+        <p>
+          &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1080;&#1084;
+          &#1087;&#1072;&#1082;&#1077;&#1090;:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make install</kbd>
+</pre>
+        <p>
+          If desired, install the documentation:
+        </p>
+        <pre class="userinput">
+<kbd class="command">mkdir -v /usr/share/doc/gmp-5.1.1
+cp    -v doc/{isa_abi_headache,configuration} doc/*.html \
+         /usr/share/doc/gmp-5.1.1</kbd>
+</pre>
+      </div>
+      <div class="content" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          <a id="contents-gmp" name="contents-gmp"></a>6.14.2.
+          &#1057;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1077;
+          GMP
+        </h2>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class="segtitle">Installed Libraries:</strong>
+              <span class="segbody">libgmp.{a,so}, libgmpxx.{a,so}, and
+              libmp.{a,so}</span>
+            </div>
+            <div class="seg">
+              <strong class=
+              "segtitle">&#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1083;&#1077;&#1085;&#1085;&#1099;&#1081;
+              &#1082;&#1072;&#1090;&#1072;&#1083;&#1086;&#1075;:</strong>
+              <span class="segbody">/usr/share/doc/gmp-5.1.1</span>
+            </div>
+          </div>
+        </div>
+        <div class="variablelist">
+          <h3>
+            &#1050;&#1088;&#1072;&#1090;&#1082;&#1086;&#1077;
+            &#1086;&#1087;&#1080;&#1089;&#1072;&#1085;&#1080;&#1077;
+          </h3>
+          <table border="0">
+            <col align="left" valign="top" />
+            <tbody>
+              <tr>
+                <td>
+                  <p>
+                    <a id="libgmp" name="libgmp"></a><span class=
+                    "term"><code class="filename">libgmp</code></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Contains precision math functions.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="libgmpxx" name="libgmpxx"></a><span class=
+                    "term"><code class="filename">libgmpxx</code></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Contains C++ precision math functions.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="libmp" name="libmp"></a><span class=
+                    "term"><code class="filename">libmp</code></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Contains the Berkeley MP math functions.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="binutils.html" title=
+          "Binutils-2.23.1">&#1055;&#1088;&#1077;&#1076;.</a>
+          <p>
+            Binutils-2.23.1
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="mpfr.html" title=
+          "MPFR-3.1.1">&#1057;&#1083;&#1077;&#1076;.</a>
+          <p>
+            MPFR-3.1.1
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter06.html" title=
+          "&#1043;&#1083;&#1072;&#1074;&#1072; 6. &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072; &#1073;&#1072;&#1079;&#1086;&#1074;&#1099;&#1093; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1085;&#1099;&#1093; &#1087;&#1072;&#1082;&#1077;&#1090;&#1086;&#1074;">
+          &#1059;&#1088;&#1086;&#1074;&#1077;&#1085;&#1100;
+          &#1074;&#1099;&#1096;&#1077;</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - &#1042;&#1077;&#1088;&#1089;&#1080;&#1103; 7.3">
+          &#1053;&#1072;&#1095;&#1072;&#1083;&#1086;</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
